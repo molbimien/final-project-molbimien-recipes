@@ -1,0 +1,7 @@
+{
+  "name": "final-project-molbimien-recipes",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "npm install --prefix backend"
+  }
+}
