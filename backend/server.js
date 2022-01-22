@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import crypto from 'crypto'
+import bcrypt from 'bcrypt'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -41,6 +42,47 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
+
+// endpoint for signing up
+app.post("/signup", async (req, res) => {
+	const { username, password } = req.body;
+
+	try {
+		const user = await User.findOne({ username });
+		const salt = bcrypt.genSaltSync();
+
+		// checks if username already exists
+		if (user) {
+			throw "Username not available";
+		}
+
+		// ensures the username length is minimum 2 characters
+		if (username.length < 2) {
+			throw "Username has to be at least 2 characters";
+		}
+
+		// ensures the password length is minimum 5 characters
+		if (password.length < 5) {
+			throw "Password has to be at least 5 characters";
+		}
+
+		const newUser = await new User({
+			username,
+			password: bcrypt.hashSync(password, salt), //encrypts / hashes password
+		}).save();
+
+		res.status(201).json({
+			response: {
+				userId: newUser._id,
+				username: newUser.username,
+				accessToken: newUser.accessToken,
+			},
+			success: true,
+		});
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
 
 // Start the server
 app.listen(port, () => {
