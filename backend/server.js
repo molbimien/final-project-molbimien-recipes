@@ -84,6 +84,34 @@ app.post("/signup", async (req, res) => {
 	}
 });
 
+// endpoint for signing in
+app.post("/login", async (req, res) => {
+	const { username, password } = req.body;
+
+	try {
+		const user = await User.findOne({ username });
+
+		// checks if user and password matches the ones in database
+		if (user && bcrypt.compareSync(password, user.password)) {
+			res.status(200).json({
+				response: {
+					userId: user._id,
+					username: user.username,
+					accessToken: user.accessToken,
+				},
+				success: true,
+			});
+		} else {
+			res.status(404).json({
+				response: "Username or password doesn't match",
+				success: false,
+			});
+		}
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
+
 // Start the server
 app.listen(port, () => {
   // eslint-disable-next-line
