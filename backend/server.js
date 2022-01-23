@@ -5,7 +5,7 @@ import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 mongoose.set('useCreateIndex', true);
 mongoose.Promise = Promise
 
@@ -54,6 +54,10 @@ const RecipeSchema = new mongoose.Schema({
   },
   description: String,
   recipeCategory: String,
+  hearts: {
+    type: Number,
+    default: 0,
+  },
 })
 
 const User = mongoose.model('User', UserSchema)
@@ -176,6 +180,32 @@ app.post("/login", async (req, res) => {
 		res.status(400).json({ response: error, success: false });
 	}
 });
+
+// ### `POST recipes/:recipeId/like`
+// This endpoint doesn't require a JSON body. Given a valid recipe id in the URL,
+// the API should find that recipe, and update its `hearts` property to add one heart.
+
+app.post('/recipes/:recipeId/like', async (req, res) => {
+  const { recipeId } = req.params
+
+  try {
+    const likedRecipe = await Recipe.findByIdAndUpdate(
+      {
+        _id: recipeId,
+      },
+      {
+        $inc: {
+          hearts: 1,
+        },
+      },
+      {
+        new: true,
+      })
+      res.status(200).json({ response: likedRecipe, success: true})
+    } catch (error) {
+      res.status(400).json({ response: error, success: false })
+    }
+})
 
 // Start the server
 app.listen(port, () => {
