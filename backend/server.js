@@ -9,6 +9,27 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.set('useCreateIndex', true);
 mongoose.Promise = Promise
 
+// Defines the port the app will run on. Defaults to 8080, but can be 
+// overridden when starting the server. For example:
+//
+//   PORT=9000 npm start
+const port = process.env.PORT || 8080
+const app = express()
+
+// Add middlewares to enable cors and json body parsing
+app.use(cors())
+app.use(express.json())
+
+// Our own middleware that checks if the database is connected before going forward to our endpoints
+app.use((req, res, next) => {
+	if (mongoose.connection.readyState === 1) {
+		next();
+	} else {
+		res.status(503).json({ error: "Service unavailable" });
+	}
+});
+
+// Add models for the db
 const UserSchema = new mongoose.Schema({
   username: {
     type: String, 
@@ -25,18 +46,18 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
+const RecipeSchema = new mongoose.Schema({
+  name: {
+    type: String, 
+    unique: true, 
+    required: true,
+  },
+  description: String,
+  recipeCategory: String,
+})
+
 const User = mongoose.model('User', UserSchema)
-
-// Defines the port the app will run on. Defaults to 8080, but can be 
-// overridden when starting the server. For example:
-//
-//   PORT=9000 npm start
-const port = process.env.PORT || 8080
-const app = express()
-
-// Add middlewares to enable cors and json body parsing
-app.use(cors())
-app.use(express.json())
+const Recipe = mongoose.model('Recipe', RecipeSchema)
 
 // authenticates user with access token
 const authenticateUser = async (req, res, next) => {
@@ -57,6 +78,34 @@ const authenticateUser = async (req, res, next) => {
 // Start defining your routes here
 app.get('/', (req, res) => {
   res.send('Hello world')
+})
+
+// endpoint to get all recipes
+app.get('/recipes', async (req, res) => {
+  const recipe = await Recipe.find(req.query)
+  res.json(recipe)
+})
+
+// endpoint to get one recipe based on id
+app.get('/recipes/id/:id', async (req, res) => {
+  try {
+    const recipeById = await Recipe.findById(req.params.id)
+    if(!recipeById) {
+      res.status(404).json({
+        response: 'Recipe not found',
+        success: false,
+      })
+    } else {
+      res.json({
+        response: recipeById,
+        success: true,
+      })
+    }
+  } catch (err) {
+    res.status(400).json({
+      error: 'Id is invalid'
+    })
+  }
 })
 
 // endpoint for signing up
