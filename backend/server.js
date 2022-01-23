@@ -1,9 +1,12 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
+import crypto from 'crypto'
+import bcrypt from 'bcrypt'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+mongoose.set('useCreateIndex', true);
 mongoose.Promise = Promise
 
 // Defines the port the app will run on. Defaults to 8080, but can be 
@@ -17,9 +20,191 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Our own middleware that checks if the database is connected before going forward to our endpoints
+app.use((req, res, next) => {
+	if (mongoose.connection.readyState === 1) {
+		next();
+	} else {
+		res.status(503).json({ error: "Service unavailable" });
+	}
+});
+
+// Add models for the db
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String, 
+    unique: true, 
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true, 
+  },
+  accessToken: {
+    type: String,
+    default: () => crypto.randomBytes(128).toString('hex'),
+  }
+})
+
+const RecipeSchema = new mongoose.Schema({
+  name: {
+    type: String, 
+    unique: true, 
+    required: true,
+  },
+  description: String,
+  recipeCategory: String,
+  hearts: {
+    type: Number,
+    default: 0,
+  },
+})
+
+const User = mongoose.model('User', UserSchema)
+const Recipe = mongoose.model('Recipe', RecipeSchema)
+
+// authenticates user with access token
+const authenticateUser = async (req, res, next) => {
+	const accessToken = req.header("Authorization");
+
+	try {
+		const user = await User.findOne({ accessToken });
+		if (user) {
+			next();
+		} else {
+			res.status(401).json({ response: "Please log in", success: false });
+		}
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+};
+
 // Start defining your routes here
 app.get('/', (req, res) => {
   res.send('Hello world')
+})
+
+// endpoint to get all recipes
+app.get('/recipes', async (req, res) => {
+  const recipe = await Recipe.find(req.query)
+  res.json(recipe)
+})
+
+// endpoint to get one recipe based on id
+app.get('/recipes/id/:id', async (req, res) => {
+  try {
+    const recipeById = await Recipe.findById(req.params.id)
+    if(!recipeById) {
+      res.status(404).json({
+        response: 'Recipe not found',
+        success: false,
+      })
+    } else {
+      res.json({
+        response: recipeById,
+        success: true,
+      })
+    }
+  } catch (err) {
+    res.status(400).json({
+      error: 'Id is invalid'
+    })
+  }
+})
+
+// endpoint for signing up
+app.post("/signup", async (req, res) => {
+	const { username, password } = req.body;
+
+	try {
+		const user = await User.findOne({ username });
+		const salt = bcrypt.genSaltSync();
+
+		// checks if username already exists
+		if (user) {
+			throw "Username not available";
+		}
+
+		// ensures the username length is minimum 2 characters
+		if (username.length < 2) {
+			throw "Username has to be at least 2 characters";
+		}
+
+		// ensures the password length is minimum 5 characters
+		if (password.length < 5) {
+			throw "Password has to be at least 5 characters";
+		}
+
+		const newUser = await new User({
+			username,
+			password: bcrypt.hashSync(password, salt), //encrypts / hashes password
+		}).save();
+
+		res.status(201).json({
+			response: {
+				userId: newUser._id,
+				username: newUser.username,
+				accessToken: newUser.accessToken,
+			},
+			success: true,
+		});
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
+
+// endpoint for signing in
+app.post("/login", async (req, res) => {
+	const { username, password } = req.body;
+
+	try {
+		const user = await User.findOne({ username });
+
+		// checks if user and password matches the ones in database
+		if (user && bcrypt.compareSync(password, user.password)) {
+			res.status(200).json({
+				response: {
+					userId: user._id,
+					username: user.username,
+					accessToken: user.accessToken,
+				},
+				success: true,
+			});
+		} else {
+			res.status(404).json({
+				response: "Username or password doesn't match",
+				success: false,
+			});
+		}
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
+
+// ### `POST recipes/:recipeId/like`
+// This endpoint doesn't require a JSON body. Given a valid recipe id in the URL,
+// the API should find that recipe, and update its `hearts` property to add one heart.
+
+app.post('/recipes/:recipeId/like', async (req, res) => {
+  const { recipeId } = req.params
+
+  try {
+    const likedRecipe = await Recipe.findByIdAndUpdate(
+      {
+        _id: recipeId,
+      },
+      {
+        $inc: {
+          hearts: 1,
+        },
+      },
+      {
+        new: true,
+      })
+      res.status(200).json({ response: likedRecipe, success: true})
+    } catch (error) {
+      res.status(400).json({ response: error, success: false })
+    }
 })
 
 // Start the server
