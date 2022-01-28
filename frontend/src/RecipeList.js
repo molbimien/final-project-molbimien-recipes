@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Box, Link } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom'
+
 
 import { API_URL } from './utils/urls'
 
@@ -15,11 +17,11 @@ const RecipeList = () => {
     }, [])
 
     return (
-        <div>
+        <Box>
             {recipes.map((recipe) => (
                 <div key={recipe._id}>
                     <h2>
-                        <Link 
+                        <Link component={RouterLink}
                         to={`/recept/${recipe.name.toLowerCase()}`}
                         state={{ recipeId: recipe._id }}
                         >
@@ -28,7 +30,7 @@ const RecipeList = () => {
                     </h2>
                 </div>
             ))}
-        </div>
+        </Box>
     )
 }
 

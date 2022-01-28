@@ -5,18 +5,21 @@ import Recipe from './Recipe'
 import Header from './Header'
 import Footer from './Footer'
 
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './utils/theme'
+
 const App = () => {
   return (
-    <>
-    <Header />
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<RecipeList/>}></Route>
-        <Route path="/recept/:recipeName" element={<Recipe/>}></Route>
-      </Routes>
-    </BrowserRouter>
-    <Footer />
-    </>
+    <ThemeProvider theme={theme}>
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<RecipeList/>}></Route>
+          <Route path="/recept/:recipeName" element={<Recipe/>}></Route>
+        </Routes>
+      </BrowserRouter>
+      <Footer />
+    </ThemeProvider>
   )
 }
 

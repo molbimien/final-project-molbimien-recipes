@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+import { Container } from "@mui/material";
 import { API_URL } from "./utils/urls"
 
 const Recipe = () => {
@@ -18,10 +19,10 @@ const Recipe = () => {
     }, [recipeId])
 
     return (
-        <div>
+        <Container>
             <h3>{recipe?.response?.name}</h3>
             <p>{recipe?.response?.description}</p>
-        </div>
+        </Container>
     )
 }
 

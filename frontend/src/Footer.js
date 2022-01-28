@@ -11,8 +11,8 @@ const Footer = () => {
                 position:'absolute',
                 bottom:'0px',
                 p: 2,
-                bgcolor: 'text.secondary',
-                color: 'text.secondary',
+                bgcolor: 'secondary.dark',
+                color: 'secondary.contrastText',
             }}
         >
             <Box>
