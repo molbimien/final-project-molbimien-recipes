@@ -12,7 +12,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<RecipeList/>}></Route>
-        <Route path="/recept/:recipeName/:recipeId" element={<Recipe/>}></Route>
+        <Route path="/recept/:recipeName" element={<Recipe/>}></Route>
       </Routes>
     </BrowserRouter>
     <Footer />

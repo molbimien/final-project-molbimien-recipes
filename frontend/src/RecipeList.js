@@ -19,7 +19,10 @@ const RecipeList = () => {
             {recipes.map((recipe) => (
                 <div key={recipe._id}>
                     <h2>
-                        <Link to={`/recept/${recipe.name}/${recipe._id}`}>
+                        <Link 
+                        to={`/recept/${recipe.name.toLowerCase()}`}
+                        state={{ recipeId: recipe._id }}
+                        >
                             {recipe.name}
                         </Link>
                     </h2>
