@@ -23,7 +23,6 @@ const RecipeList = () => {
                 gridGap: '10px'
             }}
         >
-            <h2>Mest gillade recept</h2>
             {recipes?.map((recipe) => (
                 <Box
                     sx={{
