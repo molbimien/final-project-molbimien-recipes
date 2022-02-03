@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
-import { Container } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { API_URL } from "./utils/urls"
+import { flexbox } from "@mui/system";
 
 const Recipe = () => {
     const [recipe, setRecipe] = useState([])
@@ -19,37 +20,51 @@ const Recipe = () => {
     }, [recipeId])
 
     return (
-        <Container>
-            <img
-                src={recipe?.response?.image}
-                alt={recipe?.response?.name}
-            />
+        <>
+            <Box
+                sx={{
+                    display: 'flex',
+                    height: '250px',
+                    overflow: 'hidden',
+                }}
+            >
+                <img
+                    src={recipe?.response?.image}
+                    alt={recipe?.response?.name}
+                    style={{
+                        width: '100%',
+                        objectFit: 'cover',
+                    }}
+                />
+            </Box>
+            <Container>
             <h1>{recipe?.response?.name}</h1>
             <p>{recipe?.response?.description}</p>
             <p>{recipe?.response?.recipeCategory}</p>
             <h2>Ingredienser</h2>
             <div>
-            {recipe?.response?.recipeIngredients.map((recipeIngredient, index) => {
+                {recipe?.response?.recipeIngredients.map((recipeIngredient, index) => {
                     return (
-                        <div key={index}>
-                            <p>{recipeIngredient.amount} {recipeIngredient.unit} {recipeIngredient.name}</p>
-                        </div>
+                        <p key={index}>
+                            {recipeIngredient.amount} {recipeIngredient.unit} {recipeIngredient.name}
+                        </p>
                     )
                 })
             }
             </div>
             <h2>Gör så här</h2>
             <div>
-            {recipe?.response?.recipeInstruction.map((recipeInstruction, index) => {
-                    return (
-                        <div key={index}>
-                            <p>{recipeInstruction}</p>
-                        </div>
-                    )
-                })
-            }
+                {recipe?.response?.recipeInstruction.map((recipeInstruction, index) => {
+                        return (
+                            <p key={index}>
+                                {recipeInstruction}
+                            </p>
+                        )
+                    })
+                }
             </div>
         </Container>
+        </>
     )
 }
 
