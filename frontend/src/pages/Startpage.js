@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Box } from '@mui/material'
-import RecipeList from '../RecipeList'
-import Header from '../Header'
+import RecipeList from '../components/RecipeList'
+import Header from '../components/Header'
 
 const Startpage = () => {
     return (

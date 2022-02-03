@@ -3,7 +3,7 @@ import { Box, Link } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Link as RouterLink } from 'react-router-dom'
 
-import { API_URL } from './utils/urls'
+import { API_URL } from '../utils/urls'
 
 const RecipeList = () => {
     const [recipes, setRecipes] = useState([])

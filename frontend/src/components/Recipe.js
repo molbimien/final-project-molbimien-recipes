@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { Container, Box } from "@mui/material";
-import { API_URL } from "./utils/urls"
-import { flexbox } from "@mui/system";
+import { API_URL } from "../utils/urls"
 
 const Recipe = () => {
     const [recipe, setRecipe] = useState([])

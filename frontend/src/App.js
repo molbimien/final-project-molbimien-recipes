@@ -1,13 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Startpage from './pages/Startpage'
-import Header from './Header'
-import Footer from './Footer'
+import Footer from './components/Footer'
 
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './utils/theme'
-import RecipeList from './RecipeList'
-import Recipe from './Recipe'
+import RecipeList from './components/RecipeList'
+import Recipe from './components/Recipe'
 
 
 const App = () => {
