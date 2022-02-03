@@ -83,7 +83,7 @@
         }
       ],
       "recipeInstruction": [
-        "Skala och skica potatis, morötter och lök.",
+        "Skala och skiva potatis, morötter och lök.",
         "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min.",
         "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen.",
         "Späd med resterande buljong och grädden och smaka av med salt och peppar."
@@ -91,6 +91,124 @@
     },
     {
       "name": "Caprese",
+      "description": "Marias favorittillbehör",
+      "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "recipeCategory": "tillbehör",
+      "recipeIngredients": [
+        {
+        "name": "tomater"
+        },
+        {
+        "name": "mozarellaost"
+        },
+        {
+        "name": "basilika"
+        },
+        {
+        "name": "olivolja"
+        },
+        {
+        "name": "salt och peppar"
+        }
+      ],
+      "recipeInstruction": [
+        "Skiva tomater och mozzarellan i lagom stora bitar.",
+        "Blanda med basilika på ett vackert serveringsfat.",
+        "Ringla över olivolja, salt och peppar."
+      ]
+    },
+    {
+      "name": "Mangokyckling",
+      "description": "Vincents favoriträtt",
+      "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "recipeCategory": "huvudrätt",
+      "recipeIngredients": [
+        {
+        "name": "smör"
+        },
+        {
+        "amount": "600",
+        "unit": "g",
+        "name": "kycklingfilé"
+        },
+        {
+        "amount": "1",
+        "name": "röd paprika"
+        },
+        {
+        "amount": "2",
+        "unit": "dl",
+        "name": "creme fraiche"
+        },
+        {
+        "amount": "1",
+        "unit": "dl",
+        "name": "vispgrädde"
+        },
+        {
+        "amount": "2-3",
+        "unit": "msk",
+        "name": "mango chutney"
+        },
+        {
+          "name": "salt och peppar"
+          }
+      ],
+      "recipeInstruction": [
+        "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra.",
+        "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar.",
+        "Servera med ris, grönsallad och mango chutney."
+      ],
+      "source": "Kycklingkokboken"
+    },
+    {
+      "name": "Solsoppa",
+      "description": "Snabb och enkel favorit",
+      "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "recipeCategory": "huvudrätt",
+      "recipeIngredients": [
+        {
+        "amount": "4",
+        "name": "potatisar"
+        },
+        {
+        "amount": "2",
+        "name": "gula lökar"
+        },
+        {
+        "amount": "400",
+        "unit": "g",
+        "name": "morötter"
+        },
+        {
+        "amount": "1",
+        "unit": "l",
+        "name": "grönsaksbuljong"
+        },
+        {
+        "amount": "2",
+        "unit": "dl",
+        "name": "vispgrädde"
+        },
+        {
+        "name": "smör"
+        },
+        {
+        "name": "salt och peppar"
+        },
+        {
+        "name": "färsk bladpersilja"
+        }
+      ],
+      "recipeInstruction": [
+        "Skala och skiva potatis, morötter och lök.",
+        "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min.",
+        "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen.",
+        "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+      ]
+    },
+    {
+      "name": "Capresesallad",
       "description": "Marias favorittillbehör",
       "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "tillbehör",
