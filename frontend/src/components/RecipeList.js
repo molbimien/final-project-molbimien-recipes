@@ -16,6 +16,16 @@ const RecipeList = () => {
             })
     }, [])
 
+    const replaceSpecialChars = (str) => {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+            .replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
+            .replace(/\-\-+/g, '-')	// Replaces multiple hyphens by one hyphen
+            .replace(/(^-+|-+$)/, '') // Remove extra hyphens from beginning or end of the string
+            .toLowerCase()
+    }
+    
+    console.log(replaceSpecialChars('Kycklingfilé i mangosås'))
+
     return (
         <Box
             sx={{
@@ -49,7 +59,7 @@ const RecipeList = () => {
                     >
                     <h2>
                         <Link component={RouterLink}
-                            to={`/recept/${recipe.name.toLowerCase()}`}
+                            to={`/recept/${replaceSpecialChars(recipe.name)}`}
                             state={{ recipeId: recipe._id }}
                         >
                             {recipe.name}
