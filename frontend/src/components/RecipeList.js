@@ -23,8 +23,6 @@ const RecipeList = () => {
             .replace(/(^-+|-+$)/, '') // Remove extra hyphens from beginning or end of the string
             .toLowerCase()
     }
-    
-    console.log(replaceSpecialChars('Kycklingfilé i mangosås'))
 
     return (
         <Box
