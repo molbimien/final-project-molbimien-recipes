@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, Link as RouterLink } from "react-router-dom"
 import { Box, Link } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { API_URL } from "../utils/urls"
 
@@ -57,6 +58,16 @@ const RecipeCard = (props) => {
                     </Link>
                 </h2>
                 <p>{recipe?.response?.description}</p>
+                <p
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <FavoriteIcon
+                        color='primary'
+                        style={{marginRight: '5px'}}
+                    /> x {recipe?.response?.hearts}</p>
                 <p
                     style={{
                         display: 'flex',

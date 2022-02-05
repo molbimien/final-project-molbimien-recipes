@@ -8,12 +8,16 @@ const RecipeList = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
+        fetchRecipes() // Fetch recipes with likes when component is mounted
+      }, [])
+      
+      const fetchRecipes = () => {
         fetch(API_URL('recipes'))
-            .then((res) => res.json())
-            .then((json) => {
-                setRecipes(json)
-            })
-    }, [])
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
 
     return (
         <Box
@@ -30,6 +34,7 @@ const RecipeList = () => {
                         image={recipe.image}
                         name={recipe.name}
                         description={recipe.description}
+                        hearts={recipe.hearts}
                     />
                 )
             })}
