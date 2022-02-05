@@ -57,8 +57,7 @@ const RecipeList = () => {
                     >
                     <h2>
                         <Link component={RouterLink}
-                            to={`/recept/${replaceSpecialChars(recipe.name)}`}
-                            state={{ recipeId: recipe._id }}
+                            to={`/recept/${recipe._id}/${replaceSpecialChars(recipe.name)}`}
                         >
                             {recipe.name}
                         </Link>
