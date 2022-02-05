@@ -15,7 +15,7 @@ const RecipeCard = (props) => {
             .then((json) => {
                 setRecipe(json)
             })
-    }, [recipeId])
+    }, [recipeId, props.recipeId])
 
     const replaceSpecialChars = (str) => {
         return str?.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents

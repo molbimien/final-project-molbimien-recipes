@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Box } from '@mui/material'
+import { Link as RouterLink } from "react-router-dom"
+import { Container, Box, Link } from '@mui/material'
 import RecipeList from '../components/RecipeList'
 import Header from '../components/Header'
 
@@ -21,7 +22,9 @@ const Startpage = () => {
                     }}
                 >
                     <h2>Senaste recepten</h2>
-                    <p>Se alla recept</p>
+                    <Link component={RouterLink}
+                    to="/recept">Se alla recept
+                    </Link>
                 </Box>
                 <RecipeList />
             </Container>
