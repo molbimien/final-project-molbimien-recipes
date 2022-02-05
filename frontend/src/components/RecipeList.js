@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Link } from "@mui/material";
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import { Link as RouterLink } from 'react-router-dom'
+import { Box } from "@mui/material";
 
 import { API_URL } from '../utils/urls'
+import RecipeCard from './RecipeCard';
 
 const RecipeList = () => {
     const [recipes, setRecipes] = useState([])
@@ -16,67 +15,24 @@ const RecipeList = () => {
             })
     }, [])
 
-    const replaceSpecialChars = (str) => {
-        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-            .replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
-            .replace(/\-\-+/g, '-')	// Replaces multiple hyphens by one hyphen
-            .replace(/(^-+|-+$)/, '') // Remove extra hyphens from beginning or end of the string
-            .toLowerCase()
-    }
-
     return (
         <Box
-            sx={{
-                display: 'grid',
-                gridGap: '10px'
-            }}
+        sx={{
+            display: 'grid',
+            gridGap: '10px'
+        }}
         >
-            {recipes?.map((recipe) => (
-                <Box
-                    sx={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gridGap: '10px'
-                    }}
-                    key={recipe._id}>
-                        <img
-                            src={recipe.image}
-                            alt={recipe.name}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                borderRadius: '10px'
-                                
-                            }}
-                        />
-                    <Box
-                        sx={{
-                            gridColumn: 'span 2'
-                        }}
-                    >
-                    <h2>
-                        <Link component={RouterLink}
-                            to={`/recept/${recipe._id}/${replaceSpecialChars(recipe.name)}`}
-                        >
-                            {recipe.name}
-                        </Link>
-                    </h2>
-                    <p>{recipe.description}</p>
-                    <p
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <MenuBookIcon
-                            color='primary'
-                            style={{marginRight: '5px'}}
-                        /> {recipe.recipeCategory}
-                    </p>
-                    </Box>
-                </Box>
-            ))}
+            {recipes.map((recipe) => {
+                return (
+                    <RecipeCard 
+                        key={recipe._id}
+                        recipeId={recipe._id}
+                        image={recipe.image}
+                        name={recipe.name}
+                        description={recipe.description}
+                    />
+                )
+            })}
         </Box>
     )
 }

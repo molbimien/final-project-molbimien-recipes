@@ -13,9 +13,16 @@ const Startpage = () => {
                     gridGap: '10px'
                 }}
             >
-                <h2>Mina favoritrecept just nu</h2>
-                <RecipeList />
-                <h2>Mest gillade recept</h2>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                    }}
+                >
+                    <h2>Senaste recepten</h2>
+                    <p>Se alla recept</p>
+                </Box>
                 <RecipeList />
             </Container>
         </>

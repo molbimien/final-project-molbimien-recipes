@@ -6,9 +6,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import FaceIcon from '@mui/icons-material/Face';
-import MenuIcon from "@mui/icons-material/Menu";
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import { Container } from "@mui/material";
 
 const HeaderContainer = styled.div`
@@ -53,7 +52,7 @@ const Header = () => {
                     Molbimiens skafferi
                 </Typography>
                 <Button color="inherit">
-                    <FaceIcon />
+                    <NoteAddIcon />
                 </Button>
                 </Toolbar>
             </Box>
