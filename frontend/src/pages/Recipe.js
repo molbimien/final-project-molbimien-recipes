@@ -41,7 +41,7 @@ const Recipe = () => {
         <>
             <Container>
                 <Box
-                    style={{
+                    sx={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between'
@@ -52,7 +52,7 @@ const Recipe = () => {
                         <ArrowBackIosIcon 
                             color='primary'
                         />
-                        </Link>
+                    </Link>
                     <Checkbox {...label} 
                         icon={<FavoriteBorder color='primary'/>} 
                         checkedIcon={<Favorite color='primary'/>}
