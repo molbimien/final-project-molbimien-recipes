@@ -3,6 +3,10 @@ import { Link as RouterLink } from "react-router-dom"
 import { Box, Link, Button } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
 
 import { API_URL } from "../utils/urls"
 
@@ -57,34 +61,53 @@ const RecipeCard = (props) => {
                     </Link>
                 </h2>
                 <p>{recipe?.response?.description}</p>
-                <p
+                <Box
                     style={{
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: 'space-between'
                     }}
                 >
-                    <FavoriteIcon
-                        color='primary'
-                        style={{marginRight: '5px'}}
-                    /> x {recipe?.response?.hearts}</p>
-                <p
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <MenuBookIcon
-                        color='primary'
-                        style={{marginRight: '5px'}}
-                    /> {recipe?.response?.recipeCategory}
-                </p>
-                <Button
-                    onClick={() => {
-                        props.onLikesIncrease(props.recipeId)
-                    }}
-                >
-                        Like recipe
-                </Button>
+                    <Box
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <AccessTimeIcon
+                            color='primary'
+                            style={{marginRight: '5px'}}
+                        /> {recipe?.response?.recipeCategory}
+                    </Box>
+                    <Box
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <MenuBookIcon
+                            color='primary'
+                            style={{marginRight: '5px'}}
+                        /> {recipe?.response?.recipeCategory}
+                    </Box>
+                    <Box
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Button
+                        onClick={() => {
+                            props.onLikesIncrease(props.recipeId)
+                        }}
+                    >
+                        <ThumbUpIcon
+                            color='primary'
+                            style={{marginRight: '5px'}}
+                        /> x {recipe?.response?.hearts}
+                    </Button>
+                    </Box>
+                </Box>
             </Box>
         </Box>
     )
