@@ -4,8 +4,6 @@ import { Box, Link, Button } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 
 import { API_URL } from "../utils/urls"
@@ -24,6 +22,7 @@ const RecipeCard = (props) => {
     const replaceSpecialChars = (str) => {
         return str?.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
             .replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
+            // eslint-disable-next-line
             .replace(/\-\-+/g, '-')	// Replaces multiple hyphens by one hyphen
             .replace(/(^-+|-+$)/, '') // Remove extra hyphens from beginning or end of the string
             .toLowerCase()

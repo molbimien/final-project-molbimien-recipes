@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { Container, Box, Button, Checkbox, ListItemSecondaryAction } from "@mui/material";
+import { Link as RouterLink, useParams } from "react-router-dom"
+import { Container, Box, Button, Checkbox, Link } from "@mui/material";
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
-import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 import { API_URL } from "../utils/urls"
 
@@ -40,10 +39,30 @@ const Recipe = () => {
 
     return (
         <>
+            <Container>
+                <Box
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                    }}
+                >
+                    <Link component={RouterLink}
+                        to="/">
+                        <ArrowBackIosIcon 
+                            color='primary'
+                        />
+                        </Link>
+                    <Checkbox {...label} 
+                        icon={<FavoriteBorder color='primary'/>} 
+                        checkedIcon={<Favorite color='primary'/>}
+                    />
+                </Box>
+            </Container>
             <Box
                 sx={{
                     display: 'flex',
-                    height: '250px',
+                    height: '400px',
                     overflow: 'hidden',
                 }}
             >
@@ -58,10 +77,6 @@ const Recipe = () => {
             </Box>
             <Container>
             <h1>{recipe?.response?.name}</h1>
-            <Checkbox {...label} 
-                icon={<FavoriteBorder color='primary'/>} 
-                checkedIcon={<Favorite color='primary'/>}
-            />
             <p>{recipe?.response?.description}</p>
             <Box
                 style={{
