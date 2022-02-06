@@ -19,6 +19,18 @@ const RecipeList = () => {
         })
       }
 
+      const handleLikesIncrease = (recipeId) => {
+        const options = {
+          method: 'POST',
+        }
+      
+        fetch(API_URL(`recipes/${recipeId}/like`), options)
+          .then((res) => res.json())
+          .then((json) => {
+            fetchRecipes(json)
+          })
+      }
+
     return (
         <Box
         sx={{
@@ -26,8 +38,7 @@ const RecipeList = () => {
             gridGap: '10px'
         }}
         >
-            {recipes.map((recipe) => {
-                return (
+            {recipes.map((recipe) => (
                     <RecipeCard 
                         key={recipe._id}
                         recipeId={recipe._id}
@@ -35,9 +46,10 @@ const RecipeList = () => {
                         name={recipe.name}
                         description={recipe.description}
                         hearts={recipe.hearts}
+                        onLikesIncrease={handleLikesIncrease}
                     />
                 )
-            })}
+            )}
         </Box>
     )
 }

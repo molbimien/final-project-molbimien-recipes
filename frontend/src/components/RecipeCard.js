@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useParams, Link as RouterLink } from "react-router-dom"
-import { Box, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom"
+import { Box, Link, Button } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -8,7 +8,6 @@ import { API_URL } from "../utils/urls"
 
 const RecipeCard = (props) => {
     const [recipe, setRecipe] = useState([])
-    const { recipeId } = useParams()
 
     useEffect(() => {
         fetch(API_URL(`recipes/id/${props.recipeId}`))
@@ -16,7 +15,7 @@ const RecipeCard = (props) => {
             .then((json) => {
                 setRecipe(json)
             })
-    }, [recipeId, props.recipeId])
+    }, [props.hearts, props.recipeId])
 
     const replaceSpecialChars = (str) => {
         return str?.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
@@ -79,6 +78,13 @@ const RecipeCard = (props) => {
                         style={{marginRight: '5px'}}
                     /> {recipe?.response?.recipeCategory}
                 </p>
+                <Button
+                    onClick={() => {
+                        props.onLikesIncrease(props.recipeId)
+                    }}
+                >
+                        Like recipe
+                </Button>
             </Box>
         </Box>
     )
