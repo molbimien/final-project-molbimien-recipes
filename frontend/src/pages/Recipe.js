@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Container, Box, Checkbox } from "@mui/material";
+import { Container, Box, Button, Checkbox, ListItemSecondaryAction } from "@mui/material";
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
@@ -22,6 +25,18 @@ const Recipe = () => {
                 setRecipe(json)
             })
     }, [recipeId])
+
+    const handleLikesClick = (recipeId) => {
+        const options = {
+          method: 'POST',
+        }
+      
+        fetch(API_URL(`recipes/${recipeId}/like`), options)
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipe(json)
+          })
+      }
 
     return (
         <>
@@ -48,7 +63,59 @@ const Recipe = () => {
                 checkedIcon={<Favorite color='primary'/>}
             />
             <p>{recipe?.response?.description}</p>
-            <p>{recipe?.response?.recipeCategory}</p>
+            <Box
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-around'
+                    
+                }}
+            >
+                <Box
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button size="small">
+                    <AccessTimeIcon
+                        color='primary'
+                        style={{marginRight: '5px'}}
+                    /> {recipe?.response?.recipeCookingTime}
+                    </Button>
+                </Box>
+                <Box
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button size="small">
+                    <MenuBookIcon
+                        color='primary'
+                        style={{marginRight: '5px'}}
+                    /> {recipe?.response?.recipeCategory}
+                    </Button>
+                </Box>
+                <Box
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button
+                    size="small"
+                    onClick={() => {
+                        handleLikesClick(recipeId)
+                    }}
+                >
+                    <ThumbUpIcon
+                        color='primary'
+                        style={{marginRight: '5px'}}
+                    />{recipe?.response?.likes}
+                </Button>
+                </Box>
+            </Box>
             <h2>Ingredienser</h2>
             <div>
                 {recipe?.response?.recipeIngredients.map((recipeIngredient, index) => {

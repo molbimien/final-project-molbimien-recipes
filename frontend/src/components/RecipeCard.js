@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import { Link as RouterLink } from "react-router-dom"
 import { Box, Link, Button } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 
 import { API_URL } from "../utils/urls"
