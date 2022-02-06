@@ -4,6 +4,8 @@
       "description": "Vincents favoriträtt",
       "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "huvudrätt",
+      "recipeCookingTime": "< 45 min",
+      "recipeMainIngredient": "kyckling",
       "recipeIngredients": [
         {
         "name": "smör"
@@ -48,6 +50,8 @@
       "description": "Snabb och enkel favorit",
       "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "huvudrätt",
+      "recipeCookingTime": "< 30 min",
+      "recipeMainIngredient": "grönsaker",
       "recipeIngredients": [
         {
         "amount": "4",
@@ -94,6 +98,8 @@
       "description": "Marias favorittillbehör",
       "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "tillbehör",
+      "recipeCookingTime": "< 15 min",
+      "recipeMainIngredient": "ost",
       "recipeIngredients": [
         {
         "name": "tomater"
@@ -122,6 +128,8 @@
       "description": "Vincents favoriträtt",
       "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "huvudrätt",
+      "recipeCookingTime": "< 45 min",
+      "recipeMainIngredient": "kyckling",
       "recipeIngredients": [
         {
         "name": "smör"
@@ -166,6 +174,8 @@
       "description": "Snabb och enkel favorit",
       "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "huvudrätt",
+      "recipeCookingTime": "< 30 min",
+      "recipeMainIngredient": "grönsaker",
       "recipeIngredients": [
         {
         "amount": "4",
@@ -212,6 +222,8 @@
       "description": "Marias favorittillbehör",
       "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "recipeCategory": "tillbehör",
+      "recipeCookingTime": "< 15 min",
+      "recipeMainIngredient": "ost",
       "recipeIngredients": [
         {
         "name": "tomater"

@@ -19,7 +19,7 @@ const RecipeCard = (props) => {
             .then((json) => {
                 setRecipe(json)
             })
-    }, [props.hearts, props.recipeId])
+    }, [props.likes, props.recipeId])
 
     const replaceSpecialChars = (str) => {
         return str?.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
@@ -74,10 +74,12 @@ const RecipeCard = (props) => {
                             alignItems: 'center',
                         }}
                     >
+                        <Button size="small">
                         <AccessTimeIcon
                             color='primary'
                             style={{marginRight: '5px'}}
-                        /> {recipe?.response?.recipeCategory}
+                        /> {recipe?.response?.recipeCookingTime}
+                        </Button>
                     </Box>
                     <Box
                         style={{
@@ -85,10 +87,12 @@ const RecipeCard = (props) => {
                             alignItems: 'center',
                         }}
                     >
+                        <Button size="small">
                         <MenuBookIcon
                             color='primary'
                             style={{marginRight: '5px'}}
                         /> {recipe?.response?.recipeCategory}
+                        </Button>
                     </Box>
                     <Box
                         style={{
@@ -97,6 +101,7 @@ const RecipeCard = (props) => {
                         }}
                     >
                         <Button
+                        size="small"
                         onClick={() => {
                             props.onLikesIncrease(props.recipeId)
                         }}
@@ -104,7 +109,7 @@ const RecipeCard = (props) => {
                         <ThumbUpIcon
                             color='primary'
                             style={{marginRight: '5px'}}
-                        /> x {recipe?.response?.hearts}
+                        />{recipe?.response?.likes}
                     </Button>
                     </Box>
                 </Box>

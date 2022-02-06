@@ -45,7 +45,7 @@ const RecipeList = () => {
                         image={recipe.image}
                         name={recipe.name}
                         description={recipe.description}
-                        hearts={recipe.hearts}
+                        likes={recipe.likes}
                         onLikesIncrease={handleLikesIncrease}
                     />
                 )
