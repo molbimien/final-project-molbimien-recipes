@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Container, Box } from "@mui/material";
+import { Container, Box, Checkbox } from "@mui/material";
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
+
 import { API_URL } from "../utils/urls"
+
+const label = { inputProps: { 'aria-label': 'Bookmark button' } };
 
 const Recipe = () => {
     const [recipe, setRecipe] = useState([])
@@ -36,6 +43,10 @@ const Recipe = () => {
             </Box>
             <Container>
             <h1>{recipe?.response?.name}</h1>
+            <Checkbox {...label} 
+                icon={<FavoriteBorder color='primary'/>} 
+                checkedIcon={<Favorite color='primary'/>}
+            />
             <p>{recipe?.response?.description}</p>
             <p>{recipe?.response?.recipeCategory}</p>
             <h2>Ingredienser</h2>
