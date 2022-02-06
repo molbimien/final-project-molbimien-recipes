@@ -1,19 +1,20 @@
 import React from 'react'
 import { Container } from '@mui/material'
-import RecipeList from '../components/RecipeList'
+import Header from '../components/Header'
+import FilterRecipes from '../components/FilterRecipes'
 
 const AllRecipes = () => {
     return (
         <>
+            <Header />
             <Container
                 sx={{
                     display: 'grid',
                     gridGap: '10px'
                 }}
             >
-                <h1>Recept</h1>
-                <p>filtrera listan</p>
-                <RecipeList />
+                <h1>Alla recept</h1>
+                    <FilterRecipes />
             </Container>
         </>
     )

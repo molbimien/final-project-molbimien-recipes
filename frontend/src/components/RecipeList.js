@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Box } from "@mui/material";
-
-import { API_URL } from '../utils/urls'
 import RecipeCard from './RecipeCard';
 
+import { API_URL } from '../utils/urls'
+
+
 const RecipeList = () => {
-    const [recipes, setRecipes] = useState([])
+    
+  const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
         fetchRecipes() // Fetch recipes with likes when component is mounted
@@ -35,21 +37,20 @@ const RecipeList = () => {
         <Box
         sx={{
             display: 'grid',
-            gridGap: '10px'
+            gridGap: '20px'
         }}
         >
             {recipes.map((recipe) => (
-                    <RecipeCard 
-                        key={recipe._id}
-                        recipeId={recipe._id}
-                        image={recipe.image}
-                        name={recipe.name}
-                        description={recipe.description}
-                        likes={recipe.likes}
-                        onLikesIncrease={handleLikesIncrease}
-                    />
-                )
-            )}
+              <RecipeCard 
+                  key={recipe._id}
+                  recipeId={recipe._id}
+                  image={recipe.image}
+                  name={recipe.name}
+                  description={recipe.description}
+                  likes={recipe.likes}
+                  onLikesIncrease={handleLikesIncrease}
+              />
+            ))}
         </Box>
     )
 }

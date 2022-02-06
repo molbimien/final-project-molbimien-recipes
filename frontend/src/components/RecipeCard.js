@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link as RouterLink } from "react-router-dom"
-import { Box, Link, Button } from "@mui/material";
+import { Container, Box, Link, Button } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -32,26 +32,32 @@ const RecipeCard = (props) => {
         <Box
             sx={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gridGap: '10px'
+                gridGap: '10px',
+                boxShadow: 3,
+                borderRadius: '20px',
             }}
         >
-            <img
-                src={recipe?.response?.image}
-                alt={recipe?.response?.name}
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '10px'
-                    
-                }}
-            />
-            <Box
-                    sx={{
-                        gridColumn: 'span 2'
+            <Link component={RouterLink}
+                to={`/recept/${recipe?.response?._id}/${replaceSpecialChars(recipe?.response?.name)}`}
+            >
+                <img
+                    src={recipe?.response?.image}
+                    alt={recipe?.response?.name}
+                    style={{
+                        maxWidth: '100%',
+                        height: 'auto',
+                        boxSizing: 'border-box',
+                        borderTopLeftRadius: '20px',
+                        borderTopRightRadius: '20px',
                     }}
-                >
+                />
+            </Link>
+            <Container
+                style={{
+                    paddingBottom: '16px',
+                }}
+            >
+            <Box>
                 <h2>
                     <Link component={RouterLink}
                         to={`/recept/${recipe?.response?._id}/${replaceSpecialChars(recipe?.response?.name)}`}
@@ -64,7 +70,7 @@ const RecipeCard = (props) => {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between'
+                        justifyContent: 'space-evenly'
                     }}
                 >
                     <Box
@@ -113,6 +119,7 @@ const RecipeCard = (props) => {
                     </Box>
                 </Box>
             </Box>
+            </Container>
         </Box>
     )
 }
