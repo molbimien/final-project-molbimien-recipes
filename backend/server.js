@@ -100,8 +100,17 @@ app.get('/', (req, res) => {
 
 // endpoint to get all recipes
 app.get('/recipes', async (req, res) => {
-  const recipe = await Recipe.find(req.query)
-  res.json(recipe)
+	const recipe = await Recipe.find(req.query)
+	res.json(recipe)
+})
+
+// endpoint to get the latest recipes
+app.get('/recipes/latest', async (req, res) => {
+	const latest = await Recipe.find(req.params.datePublished)
+		.sort({createdAt: -1}) // -1 for descending sort
+		.limit(3);
+
+		res.json(latest)
 })
 
 // endpoint to get one recipe based on id
