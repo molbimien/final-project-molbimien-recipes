@@ -113,6 +113,15 @@ app.get('/recipes/latest', async (req, res) => {
 		res.json(latest)
 })
 
+// endpoint to get the most liked recipes
+app.get('/recipes/liked', async (req, res) => {
+	const likes = await Recipe.find(req.params.likes)
+		.sort({likes: -1}) // -1 for descending sort
+		.limit(3);
+
+		res.json(likes)
+})
+
 // endpoint to get one recipe based on id
 app.get('/recipes/id/:id', async (req, res) => {
   try {
