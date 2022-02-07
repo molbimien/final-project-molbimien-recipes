@@ -53,8 +53,22 @@ const RecipeSchema = new mongoose.Schema({
     required: true,
   },
   description: String,
+  image: String,
   recipeCategory: String,
-  hearts: {
+  recipeCookingTime: String, 
+  recipeMainIngredient: String,
+  recipeIngredients: [{
+	amount: String,
+	unit: String,    
+	name: String, 
+  }],
+  recipeInstruction: [String],
+  datePublished: {
+	  type: Date,
+	  default: Date.now()
+	},
+	source: String,
+  likes: {
     type: Number,
     default: 0,
   },
@@ -195,7 +209,7 @@ app.post('/recipes/:recipeId/like', async (req, res) => {
       },
       {
         $inc: {
-          hearts: 1,
+          likes: 1,
         },
       },
       {
