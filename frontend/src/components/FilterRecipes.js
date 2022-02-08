@@ -1,6 +1,9 @@
 import React, { useEffect, useState }  from 'react'
-import { Box, Button, Container } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import RecipeCard from './RecipeCard';
+import Category from './Category';
+import CookingTime from './CookingTime';
+import MainIngredient from './MainIngredient';
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 
 import { API_URL } from '../utils/urls'
@@ -10,7 +13,7 @@ const FilterRecipes = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        fetchRecipes() // Fetch recipes with likes when component is mounted
+        fetchRecipes()
       }, [])
       
       const fetchRecipes = () => {
@@ -33,6 +36,27 @@ const FilterRecipes = () => {
           })
       }
 
+      const recipesByCategory = []
+      recipes.forEach(recipe => {
+          if (!recipesByCategory.includes(recipe.recipeCategory)) {
+              recipesByCategory.push(recipe.recipeCategory)
+          } 
+        })
+
+      const recipesByMainIngredient = []
+      recipes.forEach(recipe => {
+          if (!recipesByMainIngredient.includes(recipe.recipeMainIngredient)) {
+            recipesByMainIngredient.push(recipe.recipeMainIngredient)
+          } 
+        })
+
+      const recipesByCookingTime = []
+      recipes.forEach(recipe => {
+          if (!recipesByCookingTime.includes(recipe.recipeCookingTime)) {
+            recipesByCookingTime.push(recipe.recipeCookingTime)
+          } 
+      })
+
     return (
         <>
         <Box
@@ -54,30 +78,30 @@ const FilterRecipes = () => {
             </Box>
             <p>Typ av rätt</p>
             <Box>
-                <Button 
-                    variant="outlined"
-                    size="small"
-                >
-                    Testknapp
-                </Button>
+                {recipesByCategory.map(recipe => (
+                    <Category
+                        key={recipe}
+                        recipeCategory={recipe}
+                    />
+                ))}
             </Box>
             <p>Huvudingrediens</p>
             <Box>
-                <Button 
-                    variant="outlined"
-                    size="small"
-                >
-                    Testknapp
-                </Button>
+                {recipesByCookingTime.map((recipe) => (
+                    <MainIngredient
+                        key={recipe._id}
+                        recipeMainIngredient={recipe}
+                    />
+                ))}
             </Box>
             <p>Tid att laga</p>
             <Box>
-                <Button 
-                    variant="outlined"
-                    size="small"
-                >
-                    Testknapp
-                </Button>
+                {recipesByCookingTime.map((recipe) => (
+                    <CookingTime
+                        key={recipe._id}
+                        recipeCookingTime={recipe}
+                    />
+                ))}
             </Box>
             </Container>
         </Box>

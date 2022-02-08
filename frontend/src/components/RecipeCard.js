@@ -106,16 +106,17 @@ const RecipeCard = (props) => {
                         }}
                     >
                         <Button
-                        size="small"
-                        onClick={() => {
-                            props.onLikesIncrease(props.recipeId)
-                        }}
-                    >
-                        <ThumbUpIcon
-                            color='primary'
-                            style={{marginRight: '5px'}}
-                        />{recipe?.response?.likes}
-                    </Button>
+                            size="small"
+                            onClick={() => {
+                                props.onLikesIncrease(props.recipeId)
+                            }}
+                        >
+                            <ThumbUpIcon
+                                color='primary'
+                                style={{marginRight: '5px'}}
+                            />
+                            {recipe?.response?.likes}
+                        </Button>
                     </Box>
                 </Box>
             </Box>
