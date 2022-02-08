@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from 'react'
-import { Box, Container } from '@mui/material'
+import { Box, Container, Link } from '@mui/material'
 import RecipeCard from './RecipeCard';
 import Category from './Category';
 import CookingTime from './CookingTime';
@@ -57,12 +57,38 @@ const FilterRecipes = () => {
           } 
       })
 
+      const handleCategoryFilterClick = (recipeCategory) => {
+        fetch(API_URL(`recipes/?recipeCategory=${recipeCategory}`))
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
+
+      const handleMainIngredientFilterClick = (recipeMainIngredient) => {
+        fetch(API_URL(`recipes/?recipeMainIngredient=${recipeMainIngredient}`))
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
+
+      const handleRecipeCookingTimeFilterClick = (recipeCookingTime) => {
+        fetch(API_URL(`recipes/?recipeCookingTime=${recipeCookingTime}`))
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
+
+
     return (
         <>
         <Box
             sx={{
                 backgroundColor: '#eeeeee',
                 paddingBottom: '16px',
+                marginBottom: '20px',
             }}
         >
             <Container>
@@ -82,15 +108,17 @@ const FilterRecipes = () => {
                     <Category
                         key={recipe}
                         recipeCategory={recipe}
+                        onCategoryFilterClick={handleCategoryFilterClick}
                     />
                 ))}
             </Box>
             <p>Huvudingrediens</p>
             <Box>
-                {recipesByCookingTime.map((recipe) => (
+                {recipesByMainIngredient.map((recipe) => (
                     <MainIngredient
-                        key={recipe._id}
+                        key={recipe}
                         recipeMainIngredient={recipe}
+                        onMainIngredientFilterClick={handleMainIngredientFilterClick}
                     />
                 ))}
             </Box>
@@ -98,18 +126,30 @@ const FilterRecipes = () => {
             <Box>
                 {recipesByCookingTime.map((recipe) => (
                     <CookingTime
-                        key={recipe._id}
+                        key={recipe}
                         recipeCookingTime={recipe}
+                        onRecipeCookingTimeFilterClick={handleRecipeCookingTimeFilterClick}
                     />
                 ))}
             </Box>
+            <Box>
+                <Link
+                    href="#"
+                    onClick={() => {
+                        fetchRecipes()
+                    }}
+                >
+                <p>Rensa filter</p>
+                </Link>
+            </Box>
             </Container>
         </Box>
+        <Container>
         <Box
-        sx={{
-            display: 'grid',
-            gridGap: '20px'
-        }}
+            sx={{
+                display: 'grid',
+                gridGap: '20px'
+            }}
         >
             {recipes.map((recipe) => (
               <RecipeCard 
@@ -123,6 +163,7 @@ const FilterRecipes = () => {
               />
             ))}
         </Box>
+        </Container>
         </>
     )
 }

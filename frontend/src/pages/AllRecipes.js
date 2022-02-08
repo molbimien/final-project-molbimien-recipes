@@ -7,15 +7,10 @@ const AllRecipes = () => {
     return (
         <>
             <Header />
-            <Container
-                sx={{
-                    display: 'grid',
-                    gridGap: '10px'
-                }}
-            >
+            <Container>
                 <h1>Alla recept</h1>
-                    <FilterRecipes />
             </Container>
+            <FilterRecipes />
         </>
     )
 }

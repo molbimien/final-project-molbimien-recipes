@@ -20,6 +20,13 @@ const Category = (props) => {
             <Button 
                 variant="outlined"
                 size="small"
+                sx={{
+                    mr: 1,
+                    mb: 1,
+                }}
+                onClick={() => {
+                    props.onCategoryFilterClick(props.recipeCategory)
+                }}
             >
                 {props.recipeCategory}
             </Button>
