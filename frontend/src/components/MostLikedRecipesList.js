@@ -33,26 +33,31 @@ const MostLikedRecipesList = () => {
           })
       }
 
-    return (
-        <Box
-        sx={{
-            display: 'grid',
-            gridGap: '20px'
-        }}
-        >
-            {recipes.map((recipe) => (
-              <RecipeCard 
-                  key={recipe._id}
-                  recipeId={recipe._id}
-                  image={recipe.image}
-                  name={recipe.name}
-                  description={recipe.description}
-                  likes={recipe.likes}
-                  onLikesIncrease={handleLikesIncrease}
-              />
-            ))}
-        </Box>
-    )
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        overflowX: 'scroll',
+        gap: '20px',
+        marginLeft: '16px',
+        paddingRight: '16px',
+        paddingLeft: '4px',
+        paddingBottom: '10px',
+      }}
+    >
+      {recipes.map((recipe) => (
+        <RecipeCard 
+            key={recipe._id}
+            recipeId={recipe._id}
+            image={recipe.image}
+            name={recipe.name}
+            description={recipe.description}
+            likes={recipe.likes}
+            onLikesIncrease={handleLikesIncrease}
+        />
+      ))}
+    </Box>
+  )
 }
 
 export default MostLikedRecipesList

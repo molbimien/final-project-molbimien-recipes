@@ -79,7 +79,12 @@ const RecipeCard = (props) => {
                             alignItems: 'center',
                         }}
                     >
-                        <Button size="small">
+                        <Button 
+                            sx={{
+                                whiteSpace: 'nowrap'
+                            }}
+                            size="small"
+                        >
                         <AccessTimeIcon
                             color='primary'
                             style={{marginRight: '5px'}}
