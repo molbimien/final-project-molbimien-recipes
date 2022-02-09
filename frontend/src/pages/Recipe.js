@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link as RouterLink, useParams } from "react-router-dom"
 import { Container, Box, Button, Checkbox, Link } from "@mui/material";
+import useLocalStorage from "../components/UseLocalStorage"
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -37,6 +38,14 @@ const Recipe = () => {
           })
       }
 
+    const [checked, setChecked] = useLocalStorage("checked", false)
+
+    useEffect(() => {
+        localStorage.setItem("checked", JSON.stringify(checked));
+      }, [checked]);
+
+
+
     return (
         <>
             <Container>
@@ -56,6 +65,8 @@ const Recipe = () => {
                     <Checkbox {...label} 
                         icon={<FavoriteBorder color='primary'/>} 
                         checkedIcon={<Favorite color='primary'/>}
+                        checked={checked}
+                        onChange={(e) => setChecked(e.target.checked)}
                     />
                 </Box>
             </Container>
