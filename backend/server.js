@@ -213,6 +213,68 @@ app.post("/login", async (req, res) => {
 	}
 });
 
+
+// ### `POST recipes`
+// End point for adding recipe 
+app.post("/recipes", async (req, res) => {
+	const {
+		name,
+		description,
+		image,
+		recipeCategory,
+		recipeCookingTime,
+		recipeMainIngredient,
+		recipeIngredients,
+		recipeInstruction,
+		source,
+	} = req.body;
+
+	try {
+		const recipe = await Recipe.findOne({ name });
+
+		//checks if name of recipe already exists
+		if (recipe) {
+			throw "recipe name not available";
+		}
+
+		// ensures the name of recipe length is minimum 2 characters
+		if (name.length < 2) {
+			throw "recipe name has to be at least 2 characters";
+		}
+
+		const newRecipe = await new Recipe({
+			name,
+			description,
+			image,
+			recipeCategory,
+			recipeCookingTime,
+			recipeMainIngredient,
+			recipeIngredients,
+			recipeInstruction,
+			source,
+		}).save();
+
+		res.status(201).json({
+			response: {
+				recipeId: newRecipe._id,
+				name: newRecipe.name,
+				description: newRecipe.description,
+				image: newRecipe.image,
+				recipeCategory: newRecipe.recipeCategory,
+				recipeCookingTime: newRecipe.recipeCookingTime,
+				recipeMainIngredient: newRecipe.recipeMainIngredient,
+				recipeIngredients: newRecipe.recipeIngredients,
+				recipeInstruction: newRecipe.recipeInstruction,
+				datePublished: newRecipe.datePublished,
+				source: newRecipe.source,
+			},
+			success: true,
+		});
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
+
 // ### `POST recipes/:recipeId/like`
 // This endpoint doesn't require a JSON body. Given a valid recipe id in the URL,
 // the API should find that recipe, and update its `hearts` property to add one heart.
