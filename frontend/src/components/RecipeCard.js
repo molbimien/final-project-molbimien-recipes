@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link as RouterLink } from "react-router-dom"
-import { Container, Box, Link, Button } from "@mui/material";
+import { Container, Box, Link, Button, Typography } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -27,6 +28,13 @@ const RecipeCard = (props) => {
             .replace(/(^-+|-+$)/, '') // Remove extra hyphens from beginning or end of the string
             .toLowerCase()
     }
+
+    const recipeCardFont = createTheme({
+        typography: {
+          fontFamily: [
+            'Charmonman',
+          ].join(','),
+      },});
 
     return (
         <Box
@@ -65,7 +73,17 @@ const RecipeCard = (props) => {
                         {recipe?.response?.name}
                     </Link>
                 </h2>
-                <p>{recipe?.response?.description}</p>
+                <ThemeProvider theme={recipeCardFont}>
+                <Typography
+                            variant="h6"
+                            style={{
+                             textAlign: 'center',
+                             marginBlockEnd: '0.67em',
+                            }}
+                        >
+                            "{recipe?.response?.description}"
+                        </Typography>
+            </ThemeProvider>
                 <Box
                     style={{
                         display: 'flex',
