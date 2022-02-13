@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link as RouterLink, useParams } from "react-router-dom"
-import { Container, Box, Button, Checkbox, Link } from "@mui/material";
+import { Container, Box, Button, Checkbox, Link, Typography } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -36,6 +37,13 @@ const Recipe = () => {
             setRecipe(json)
           })
       }
+
+      const recipeFont = createTheme({
+        typography: {
+          fontFamily: [
+            'Charmonman',
+          ].join(','),
+      },});
 
     return (
         <>
@@ -76,9 +84,24 @@ const Recipe = () => {
                     }}
                 />
             </Box>
-            <Container>
+            <Container
+                sx= {{
+                    marginBottom: '50px',
+                }}
+            >
             <h1>{recipe?.response?.name}</h1>
-            <p>{recipe?.response?.description}</p>
+            <ThemeProvider theme={recipeFont}>
+                <Typography
+                            variant="h6"
+                            style={{
+                             textAlign: 'center',
+                             marginBlockEnd: '0.67em',
+                            }}
+                        >
+                            "{recipe?.response?.description}"
+                        </Typography>
+            </ThemeProvider>
+            {/* <p>{recipe?.response?.description}</p> */}
             <Box
                 style={{
                     display: 'flex',
@@ -134,25 +157,28 @@ const Recipe = () => {
             </Box>
             <h2>Ingredienser</h2>
             <div>
-                {recipe?.response?.recipeIngredients.map((recipeIngredient, index) => {
+                {recipe?.response?.ingredients.map((ingredient, index) => {
                     return (
                         <p key={index}>
-                            {recipeIngredient.amount} {recipeIngredient.unit} {recipeIngredient.name}
+                            {ingredient.recipeIngredientAmount} {ingredient.recipeIngredientUnit} {ingredient.recipeIngredient}
                         </p>
                     )
                 })
             }
             </div>
             <h2>Gör så här</h2>
-            <div>
-                {recipe?.response?.recipeInstruction.map((recipeInstruction, index) => {
+            <div
+                style={{whiteSpace: "pre-line"}} // keep line-breaks from content added in add recipe form
+            >
+                {recipe?.response?.recipeInstruction}
+                {/* {recipe?.response?.recipeInstruction.map((recipeInstruction, index) => {
                         return (
                             <p key={index}>
                                 {recipeInstruction}
                             </p>
                         )
                     })
-                }
+                } */}
             </div>
         </Container>
         </>
