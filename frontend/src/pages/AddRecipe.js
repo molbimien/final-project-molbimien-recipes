@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link as RouterLink } from "react-router-dom"
-import { Container, Box, TextField, Select, FormControl, InputLabel, MenuItem, Link, Button,  } from '@mui/material'
+import { Container, Box, TextField, Select, FormControl, InputLabel, MenuItem, Link, Button } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
@@ -14,8 +14,14 @@ const AddRecipe = () => {
   const [recipeCategory, setRecipeCategory] = useState("")
   const [recipeCookingTime, setRecipeCookingTime] = useState("")
   const [recipeMainIngredient, setRecipeMainIngredient] = useState("")
-  const [ingredients, setIngredients] = useState([{ recipeIngredientAmount: "", recipeIngredientUnit: "", recipeIngredient: "", }])
-  const [recipeInstruction, setRecipeInstruction] = useState("")
+  const [recipeIngredients, setRecipeIngredients] = useState(
+    [{ 
+      recipeIngredientAmount: "",
+      recipeIngredientUnit: "",
+      recipeIngredient: "",
+    }]
+    )
+  const [recipeInstruction, setRecipeInstruction] = useState([{ instruction: "" }])
   const [source, setSource] = useState("")
   // eslint-disable-next-line
   const [message, setMessage] = useState("")
@@ -28,46 +34,40 @@ const AddRecipe = () => {
     e.preventDefault()
     try { 
       let res = await fetch(API_URL('recipes'), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-              },
-            body: JSON.stringify({
-                name,
-                description,
-                image,
-                recipeCategory,
-                recipeCookingTime,
-                recipeMainIngredient,
-                ingredients,
-                recipeInstruction,
-                source,
-      }),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+          },
+        body: JSON.stringify({
+          name,
+          description,
+          image,
+          recipeCategory,
+          recipeCookingTime,
+          recipeMainIngredient,
+          recipeIngredients,
+          recipeInstruction,
+          source,
+        }),
     })
     
     // eslint-disable-next-line
     let resJson = await res.json()
-      if (res.status === 200) {
+      if (res.status === 200 || 201) {
         setName("")
         setDescription("")
         setImage("")
         setRecipeCategory("")
         setRecipeCookingTime("")
         setRecipeMainIngredient("")
-        setIngredients("")
-        setRecipeInstruction("")
+        setRecipeIngredients([{ 
+          recipeIngredientAmount: "",
+          recipeIngredientUnit: "",
+          recipeIngredient: "",
+        }])
+        setRecipeInstruction([{ instruction: "" }])
         setSource("")
         setMessage("Recipe created successfully")
-      } if (res.status === 201) {
-          setName("")
-          setDescription("")
-          setImage("")
-          setRecipeCategory("")
-          setRecipeCookingTime("")
-          setRecipeMainIngredient("")
-          setRecipeInstruction("")
-          setSource("")
-          setMessage("201 - content created")
       } else {
         setMessage("Some error occured")
         console.log(res.status)
@@ -76,6 +76,47 @@ const AddRecipe = () => {
       console.log(err)
     }
   }
+
+  const handleIngredientChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...recipeIngredients];
+    list[index][name] = value;
+    setRecipeIngredients(list);
+  };
+
+  const handleIngredientAdd = () => {
+    setRecipeIngredients([
+      ...recipeIngredients,
+      {
+        recipeIngredientAmount: "",
+        recipeIngredientUnit: "",
+        recipeIngredient: "",
+      }
+    ]);
+  };
+
+  const handleIngredientRemove = (index) => {
+    const list = [...recipeIngredients];
+    list.splice(index, 1);
+    setRecipeIngredients(list);
+  };
+
+  const handleInstructionChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...recipeInstruction];
+    list[index][name] = value;
+    setRecipeInstruction(list);
+  };
+
+  const handleInstructionRemove = (index) => {
+    const list = [...recipeInstruction];
+    list.splice(index, 1);
+    setRecipeInstruction(list);
+  };
+
+  const handleInstructionAdd = () => {
+    setRecipeInstruction([...recipeInstruction, { instruction: "" }]);
+  };
   
   return (
     <>
@@ -219,16 +260,76 @@ const AddRecipe = () => {
                 ))}
               </Select>
             </FormControl>
-            <TextField
-              fullWidth
-              // required
-              multiline
-              rows={4}
-              id='recipeInstruction'
-              label='Instruktion'
-              value={recipeInstruction}
-              onChange={(e) => setRecipeInstruction(e.target.value)}
-            />
+            <Box>
+                {recipeIngredients.map((ingredient, index) => (
+                  <Box key={index}>
+                    <TextField
+                      fullWidth
+                      // required
+                      label='Mängd'
+                      name="recipeIngredientAmount"
+                      value={ingredient.recipeIngredientAmount}
+                      onChange={(e) => handleIngredientChange(e, index)}
+                    />
+                    <TextField
+                      fullWidth
+                      // required
+                      label='Måttenhet'
+                      name="recipeIngredientUnit"
+                      value={ingredient.recipeIngredientUnit}
+                      onChange={(e) => handleIngredientChange(e, index)}
+                    />
+                    <TextField
+                      fullWidth
+                      required
+                      name="recipeIngredient"
+                      label='Ingrediens'
+                      value={ingredient.recipeIngredient}
+                      onChange={(e) => handleIngredientChange(e, index)}
+                    />
+                    {recipeIngredients.length - 1 === index && recipeIngredients.length < 4 && (
+                    <Button
+                      onClick={handleIngredientAdd}
+                    >
+                      Lägg till ingrediens
+                    </Button>
+                  )}
+                
+                  {recipeIngredients.length !== 1 && (
+                    <Button
+                      onClick={() => handleIngredientRemove(index)}
+                    >
+                      Ta bort ingrediens
+                    </Button>
+                  )}
+                </Box>
+            ))}
+            {recipeInstruction.map((singleInstruction, index) => (
+              <Box key={index}>
+                  <TextField
+                    name="instruction"
+                    id="instruction"
+                    label='Instruktion'
+                    value={singleInstruction.instruction}
+                    onChange={(e) => handleInstructionChange(e, index)}
+                  />
+                  {recipeInstruction.length - 1 === index && recipeInstruction.length < 4 && (
+                    <Button
+                      onClick={handleInstructionAdd}
+                    >
+                      Lägg till instruktion
+                    </Button>
+                  )}
+                
+                  {recipeInstruction.length !== 1 && (
+                    <Button
+                      onClick={() => handleInstructionRemove(index)}
+                    >
+                      Ta bort instruktion
+                    </Button>
+                  )}
+              </Box>
+            ))}
             <TextField
               fullWidth
               label='Källa'
@@ -271,6 +372,7 @@ const AddRecipe = () => {
               width: '120%',
             }}   
           >
+          </Box>
           </Box>
         </Container>
       </Box>
