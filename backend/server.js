@@ -46,12 +46,6 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
-const RecipeIngredientsSchema = new mongoose.Schema({
-	recipeIngredientAmount: String,
-	recipeIngredientUnit: String,
-	recipeIngredient: String,
-  });
-
 const RecipeSchema = new mongoose.Schema({
   name: {
     type: String, 
@@ -63,8 +57,14 @@ const RecipeSchema = new mongoose.Schema({
   recipeCategory: String,
   recipeCookingTime: String, 
   recipeMainIngredient: String,
-  ingredients: [RecipeIngredientsSchema],
-  recipeInstruction: String,
+  recipeIngredients: [{
+		recipeIngredientAmount: String, 
+		recipeIngredientUnit: String, 
+		recipeIngredient: String, 
+	}],
+  recipeInstruction: [{
+    instruction: Array, 
+  }],
   datePublished: {
 	  type: Date,
 	  default: Date.now()
@@ -226,7 +226,7 @@ app.post("/recipes", async (req, res) => {
 		recipeCategory,
 		recipeCookingTime,
 		recipeMainIngredient,
-		ingredients,
+		recipeIngredients,
 		recipeInstruction,
 		source,
 	} = req.body;
@@ -251,7 +251,7 @@ app.post("/recipes", async (req, res) => {
 			recipeCategory,
 			recipeCookingTime,
 			recipeMainIngredient,
-			ingredients,
+			recipeIngredients,
 			recipeInstruction,
 			source,
 		}).save();
