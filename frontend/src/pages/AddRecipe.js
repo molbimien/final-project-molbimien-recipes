@@ -3,6 +3,8 @@ import { Link as RouterLink } from "react-router-dom"
 import { Container, Box, TextField, Select, FormControl, InputLabel, MenuItem, Link, Button } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 import { API_URL } from "../utils/urls"
 
@@ -175,8 +177,8 @@ const AddRecipe = () => {
                 '& > :not(style)': { 
                   m: {
                     xs: 1,
-                    md: 2,
-                    lg: 3,
+                    // md: 2,
+                    // lg: 3,
                     },
                   width: {
                     xs: '25ch',
@@ -211,11 +213,19 @@ const AddRecipe = () => {
             fullWidth
             // required
             id='image'
-            label='Bild'
+            label='Bildadress (URL)'
             value={image}
             onChange={(e) => setImage(e.target.value)}
             />
             {/* <FormControl fullWidth required> */}
+            <TextField
+              fullWidth
+              label='Källa'
+              type="text"
+              value={source}
+              placeholder="Källa"
+              onChange={(e) => setSource(e.target.value)}
+            />
             <FormControl fullWidth>
             <InputLabel>Välj kategori</InputLabel>
               <Select 
@@ -261,118 +271,136 @@ const AddRecipe = () => {
               </Select>
             </FormControl>
             <Box>
+              <h3>Ingredienser</h3>
                 {recipeIngredients.map((ingredient, index) => (
-                  <Box key={index}>
-                    <TextField
-                      fullWidth
-                      // required
-                      label='Mängd'
-                      name="recipeIngredientAmount"
-                      value={ingredient.recipeIngredientAmount}
-                      onChange={(e) => handleIngredientChange(e, index)}
-                    />
-                    <TextField
-                      fullWidth
-                      // required
-                      label='Måttenhet'
-                      name="recipeIngredientUnit"
-                      value={ingredient.recipeIngredientUnit}
-                      onChange={(e) => handleIngredientChange(e, index)}
-                    />
-                    <TextField
-                      fullWidth
-                      required
-                      name="recipeIngredient"
-                      label='Ingrediens'
-                      value={ingredient.recipeIngredient}
-                      onChange={(e) => handleIngredientChange(e, index)}
-                    />
+                  <Box
+                    key={index}>
+                      <TextField
+                        fullWidth
+                        // required
+                        label='Mängd'
+                        name="recipeIngredientAmount"
+                        value={ingredient.recipeIngredientAmount}
+                        onChange={(e) => handleIngredientChange(e, index)}
+                        sx={{
+                          marginBottom: '10px',
+                        }}
+                      />
+                      <TextField
+                        fullWidth
+                        // required
+                        label='Måttenhet'
+                        name="recipeIngredientUnit"
+                        value={ingredient.recipeIngredientUnit}
+                        onChange={(e) => handleIngredientChange(e, index)}
+                        sx={{
+                          marginBottom: '10px',
+                        }}
+                      />
+                      <TextField
+                        fullWidth
+                        required
+                        name="recipeIngredient"
+                        label='Ingrediens'
+                        value={ingredient.recipeIngredient}
+                        onChange={(e) => handleIngredientChange(e, index)}
+                        sx={{
+                          marginBottom: '10px',
+                        }}
+                      />
+                    {recipeIngredients.length !== 1 && (
+                      <Button
+                        onClick={() => handleIngredientRemove(index)}
+                        sx={{
+                          marginBottom: '30px',
+                        }}
+                      >
+                        <RemoveCircleIcon style={{marginRight: '5px'}}/> Ta bort ingrediens
+                      </Button>
+                    )}
                     {recipeIngredients.length - 1 === index && recipeIngredients.length < 4 && (
-                    <Button
-                      onClick={handleIngredientAdd}
-                    >
-                      Lägg till ingrediens
-                    </Button>
-                  )}
-                
-                  {recipeIngredients.length !== 1 && (
-                    <Button
-                      onClick={() => handleIngredientRemove(index)}
-                    >
-                      Ta bort ingrediens
-                    </Button>
-                  )}
+                      <Button
+                        onClick={handleIngredientAdd}
+                      >
+                        <AddCircleIcon style={{marginRight: '5px'}}/> Lägg till ingrediens
+                      </Button>
+                    )}
                 </Box>
-            ))}
-            {recipeInstruction.map((singleInstruction, index) => (
-              <Box key={index}>
-                  <TextField
-                    name="instruction"
-                    id="instruction"
-                    label='Instruktion'
-                    value={singleInstruction.instruction}
-                    onChange={(e) => handleInstructionChange(e, index)}
-                  />
-                  {recipeInstruction.length - 1 === index && recipeInstruction.length < 4 && (
-                    <Button
-                      onClick={handleInstructionAdd}
-                    >
-                      Lägg till instruktion
-                    </Button>
-                  )}
-                
-                  {recipeInstruction.length !== 1 && (
-                    <Button
-                      onClick={() => handleInstructionRemove(index)}
-                    >
-                      Ta bort instruktion
-                    </Button>
-                  )}
+              ))}
+              <Box>
+                <h3>Instruktioner</h3>
+                {recipeInstruction.map((singleInstruction, index) => (
+                  <Box key={index}>
+                      <TextField
+                        fullWidth
+                        name="instruction"
+                        id="instruction"
+                        label='Instruktionssteg'
+                        value={singleInstruction.instruction}
+                        onChange={(e) => handleInstructionChange(e, index)}
+                        sx={{
+                          marginBottom: '10px',
+                        }}
+                      />
+                       {recipeInstruction.length !== 1 && (
+                        <Button
+                          onClick={() => handleInstructionRemove(index)}
+                          sx={{
+                            marginBottom: '30px',
+                          }}
+                        >
+                          <RemoveCircleIcon style={{marginRight: '5px',}}/> Ta  bort steg
+                        </Button>
+                      )}
+                      {recipeInstruction.length - 1 === index && recipeInstruction.length < 4 && (
+                        <Button
+                          onClick={handleInstructionAdd}
+                          sx={{
+                            marginBottom: '10px',
+                          }}
+                        >
+                          <AddCircleIcon style={{marginRight: '5px'}}/> Lägg till steg
+                        </Button>
+                      )}
+                  </Box>
+                ))}
               </Box>
-            ))}
-            <TextField
-              fullWidth
-              label='Källa'
-              type="text"
-              value={source}
-              placeholder="Källa"
-              onChange={(e) => setSource(e.target.value)}
-            />
-            <Box
-              sx={{
-                display: 'grid',
-                justifyItems: 'center', 
-                paddingTop: '20px',
-              }}
-            >
-            <Button
-                type="submit"
-                variant="contained"
-                size="large"
+              <Box
                 sx={{
-                  borderRadius: '4px',
-                  bgcolor: grey[900],
-                }}   
-            >
-                Lägg till recept
-            </Button>
+                  display: 'grid',
+                  justifyItems: 'center', 
+                  paddingTop: '20px',
+                }}
+              >
+                <Box
+                  sx={{
+                    marginBottom: '20px',
+                  }}
+                >
+                  <p>
+                    Har du fyllt i hela receptet? Klicka på Lägg till recept nedan!
+                  </p>
+                </Box>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      borderRadius: '4px',
+                      bgcolor: grey[900],
+                    }}   
+                >
+                    Lägg till recept
+                </Button>
+              </Box>
+              {message ? <p>{message}</p> : null}
             </Box>
-            {message ? <p>{message}</p> : null}
-          </Box>
-          <Box
-            sx={{ 
-              padding: '20px',
-            }}   
-          >
-          </Box>
-          <Box
-            sx={{
-              bgcolor: 'primary.main',
-              padding: '20px',
-              width: '120%',
-            }}   
-          >
-          </Box>
+            <Box
+              sx={{ 
+                padding: '20px',
+              }}   
+            >
+            </Box>
           </Box>
         </Container>
       </Box>
