@@ -157,28 +157,25 @@ const Recipe = () => {
             </Box>
             <h2>Ingredienser</h2>
             <div>
-                {recipe?.response?.ingredients.map((ingredient, index) => {
+                {recipe?.response?.recipeIngredients.map((recipeIngredients, index) => {
                     return (
                         <p key={index}>
-                            {ingredient.recipeIngredientAmount} {ingredient.recipeIngredientUnit} {ingredient.recipeIngredient}
+                            {recipeIngredients.recipeIngredientAmount} {recipeIngredients.recipeIngredientUnit} {recipeIngredients.recipeIngredient}
                         </p>
                     )
                 })
             }
             </div>
             <h2>Gör så här</h2>
-            <div
-                style={{whiteSpace: "pre-line"}} // keep line-breaks from content added in add recipe form
-            >
-                {recipe?.response?.recipeInstruction}
-                {/* {recipe?.response?.recipeInstruction.map((recipeInstruction, index) => {
+            <div>
+                {recipe?.response?.recipeInstruction?.map((recipeInstruction, index) => {
                         return (
                             <p key={index}>
-                                {recipeInstruction}
+                                {recipeInstruction.instruction}
                             </p>
                         )
                     })
-                } */}
+                }
             </div>
         </Container>
         </>
