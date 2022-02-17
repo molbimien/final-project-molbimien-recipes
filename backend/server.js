@@ -98,9 +98,10 @@ const authenticateUser = async (req, res, next) => {
 
 // Start defining your routes here
 app.get('/', (req, res) => {
-	res.send(
-		"Welcome to Molbimiens skafferi API - by Maria Sjögren (https://github.com/molbimien/). See full documentation here 👉 https://github.com/molbimien/final-project-molbimien-recipes/blob/main/Documentation.md")
-			// listEndpoints(app),
+	res.send({
+		"Welcome to Molbimiens skafferi API - by Maria Sjögren (https://github.com/molbimien/). See full documentation here 👉 https://github.com/molbimien/final-project-molbimien-recipes/blob/main/Documentation.md":
+		listEndpoints(app),
+	})
 })
 
 // endpoint to get all recipes
