@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
+import listEndpoints from "express-list-endpoints"
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
@@ -96,9 +97,12 @@ const authenticateUser = async (req, res, next) => {
 };
 
 // Start defining your routes here
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
+app.get("/", (req, res) => {
+	res.send({
+		"Welcome to Molbimiens skafferi API - by Maria Sjögren (https://github.com/molbimien/). See full documentation here 👉 ":
+			listEndpoints(app),
+	});
+});
 
 // endpoint to get all recipes
 app.get('/recipes', async (req, res) => {
