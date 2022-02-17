@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 import listEndpoints from "express-list-endpoints"
+import recipeData from '../data/recipes.json'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
@@ -95,6 +96,20 @@ const authenticateUser = async (req, res, next) => {
 		res.status(400).json({ response: error, success: false });
 	}
 };
+
+// Seed and save json data to the db
+if (process.env.RESET_DB) {
+
+	const seedDatabase = () => {
+  
+		recipeData.forEach(item => {
+		const newRecipeTitle = new newRecipeTitle(item)
+		newRecipeTitle.save()
+	  })
+	}
+	
+	seedDatabase()
+  }
 
 // Start defining your routes here
 app.get('/', (req, res) => {
