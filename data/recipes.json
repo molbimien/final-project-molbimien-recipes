@@ -8,40 +8,46 @@
       "recipeMainIngredient": "kyckling",
       "recipeIngredients": [
         {
-        "name": "smör"
+        "recipeIngredient": "smör"
         },
         {
-        "amount": "600",
-        "unit": "g",
-        "name": "kycklingfilé"
+        "recipeIngredientAmount": "600",
+        "recipeIngredientUnit": "g",
+        "recipeIngredient": "kycklingfilé"
         },
         {
-        "amount": "1",
-        "name": "röd paprika"
+        "recipeIngredientAmount": "1",
+        "recipeIngredient": "röd paprika"
         },
         {
-        "amount": "2",
-        "unit": "dl",
-        "name": "creme fraiche"
+        "recipeIngredientAmount": "2",
+        "recipeIngredientUnit": "dl",
+        "recipeIngredient": "creme fraiche"
         },
         {
-        "amount": "1",
-        "unit": "dl",
-        "name": "vispgrädde"
+        "recipeIngredientAmount": "1",
+        "recipeIngredientUnit": "dl",
+        "recipeIngredient": "vispgrädde"
         },
         {
-        "amount": "2-3",
-        "unit": "msk",
-        "name": "mango chutney"
+        "recipeIngredientAmount": "2-3",
+        "recipeIngredientUnit": "msk",
+        "recipeIngredient": "mango chutney"
         },
         {
-          "name": "salt och peppar"
+          "recipeIngredient": "salt och peppar"
           }
       ],
       "recipeInstruction": [
-        "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra.",
-        "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar.",
-        "Servera med ris, grönsallad och mango chutney."
+        {
+          "instruction": "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra."
+        },
+        {
+          "instruction": "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar."
+        },
+        {
+          "instruction": "Servera med ris, grönsallad och mango chutney."
+        }
       ],
       "source": "Kycklingkokboken"
     },
@@ -54,43 +60,48 @@
       "recipeMainIngredient": "grönsaker",
       "recipeIngredients": [
         {
-        "amount": "4",
-        "name": "potatisar"
+        "recipeIngredientAmount": "4",
+        "recipeIngredient": "potatisar"
         },
         {
-        "amount": "2",
-        "name": "gula lökar"
+        "recipeIngredientAmount": "2",
+        "recipeIngredient": "gula lökar"
         },
         {
-        "amount": "400",
-        "unit": "g",
-        "name": "morötter"
+        "recipeIngredientAmount": "400",
+        "recipeIngredientUnit": "g",
+        "recipeIngredient": "morötter"
         },
         {
-        "amount": "1",
-        "unit": "l",
-        "name": "grönsaksbuljong"
+        "recipeIngredientAmount": "1",
+        "recipeIngredientUnit": "l",
+        "recipeIngredient": "grönsaksbuljong"
         },
         {
-        "amount": "2",
-        "unit": "dl",
-        "name": "vispgrädde"
+        "recipeIngredientAmount": "2",
+        "recipeIngredientUnit": "dl",
+        "recipeIngredient": "vispgrädde"
         },
         {
-        "name": "smör"
+        "recipeIngredient": "smör"
         },
         {
-        "name": "salt och peppar"
+        "recipeIngredient": "salt och peppar"
         },
         {
-        "name": "färsk bladpersilja"
+        "recipeIngredient": "färsk bladpersilja"
         }
       ],
       "recipeInstruction": [
-        "Skala och skiva potatis, morötter och lök.",
-        "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min.",
-        "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen.",
-        "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+        {
+          "instruction": "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min."
+        },
+        {
+          "instruction": "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen."
+        },
+        {
+          "instruction": "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+        }
       ]
     },
     {
@@ -102,25 +113,31 @@
       "recipeMainIngredient": "ost",
       "recipeIngredients": [
         {
-        "name": "tomater"
+        "recipeIngredient": "tomater"
         },
         {
-        "name": "mozarellaost"
+        "recipeIngredient": "mozarellaost"
         },
         {
-        "name": "basilika"
+        "recipeIngredient": "basilika"
         },
         {
-        "name": "olivolja"
+        "recipeIngredient": "olivolja"
         },
         {
-        "name": "salt och peppar"
+        "recipeIngredient": "salt och peppar"
         }
       ],
       "recipeInstruction": [
-        "Skiva tomater och mozzarellan i lagom stora bitar.",
-        "Blanda med basilika på ett vackert serveringsfat.",
-        "Ringla över olivolja, salt och peppar."
+        {
+          "instruction": "Skiva tomater och mozzarellan i lagom stora bitar."
+        },
+        {
+          "instruction": "Blanda med basilika på ett vackert serveringsfat."
+        },
+        {
+          "instruction": "Ringla över olivolja, salt och peppar."
+        }
       ]
     },
     {
@@ -132,40 +149,46 @@
       "recipeMainIngredient": "kyckling",
       "recipeIngredients": [
         {
-        "name": "smör"
+        "recipeIngredient": "smör"
         },
         {
-        "amount": "600",
-        "unit": "g",
-        "name": "kycklingfilé"
+        "recipeIngredientAmount": "600",
+        "recipeIngredientUnit": "g",
+        "recipeIngredient": "kycklingfilé"
         },
         {
-        "amount": "1",
-        "name": "röd paprika"
+        "recipeIngredientAmount": "1",
+        "recipeIngredient": "röd paprika"
         },
         {
-        "amount": "2",
-        "unit": "dl",
-        "name": "creme fraiche"
+        "recipeIngredientAmount": "2",
+        "recipeIngredientUnit": "dl",
+        "recipeIngredient": "creme fraiche"
         },
         {
-        "amount": "1",
-        "unit": "dl",
-        "name": "vispgrädde"
+        "recipeIngredientAmount": "1",
+        "recipeIngredientUnit": "dl",
+        "recipeIngredient": "vispgrädde"
         },
         {
-        "amount": "2-3",
-        "unit": "msk",
-        "name": "mango chutney"
+        "recipeIngredientAmount": "2-3",
+        "recipeIngredientUnit": "msk",
+        "recipeIngredient": "mango chutney"
         },
         {
-          "name": "salt och peppar"
+          "recipeIngredient": "salt och peppar"
           }
       ],
       "recipeInstruction": [
-        "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra.",
-        "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar.",
-        "Servera med ris, grönsallad och mango chutney."
+        {
+          "instruction": "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra."
+        },
+        {
+          "instruction": "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar."
+        },
+        {
+          "instruction": "Servera med ris, grönsallad och mango chutney."
+        }
       ],
       "source": "Kycklingkokboken"
     },
@@ -178,43 +201,48 @@
       "recipeMainIngredient": "grönsaker",
       "recipeIngredients": [
         {
-        "amount": "4",
-        "name": "potatisar"
+        "recipeIngredientAmount": "4",
+        "recipeIngredient": "potatisar"
         },
         {
-        "amount": "2",
-        "name": "gula lökar"
+        "recipeIngredientAmount": "2",
+        "recipeIngredient": "gula lökar"
         },
         {
-        "amount": "400",
-        "unit": "g",
-        "name": "morötter"
+        "recipeIngredientAmount": "400",
+        "recipeIngredientUnit": "g",
+        "recipeIngredient": "morötter"
         },
         {
-        "amount": "1",
-        "unit": "l",
-        "name": "grönsaksbuljong"
+        "recipeIngredientAmount": "1",
+        "recipeIngredientUnit": "l",
+        "recipeIngredient": "grönsaksbuljong"
         },
         {
-        "amount": "2",
-        "unit": "dl",
-        "name": "vispgrädde"
+        "recipeIngredientAmount": "2",
+        "recipeIngredientUnit": "dl",
+        "recipeIngredient": "vispgrädde"
         },
         {
-        "name": "smör"
+        "recipeIngredient": "smör"
         },
         {
-        "name": "salt och peppar"
+        "recipeIngredient": "salt och peppar"
         },
         {
-        "name": "färsk bladpersilja"
+        "recipeIngredient": "färsk bladpersilja"
         }
       ],
       "recipeInstruction": [
-        "Skala och skiva potatis, morötter och lök.",
-        "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min.",
-        "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen.",
-        "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+        {
+          "instruction": "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min."
+        },
+        {
+          "instruction": "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen."
+        },
+        {
+          "instruction": "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+        }
       ]
     },
     {
@@ -226,25 +254,31 @@
       "recipeMainIngredient": "ost",
       "recipeIngredients": [
         {
-        "name": "tomater"
+        "recipeIngredient": "tomater"
         },
         {
-        "name": "mozarellaost"
+        "recipeIngredient": "mozarellaost"
         },
         {
-        "name": "basilika"
+        "recipeIngredient": "basilika"
         },
         {
-        "name": "olivolja"
+        "recipeIngredient": "olivolja"
         },
         {
-        "name": "salt och peppar"
+        "recipeIngredient": "salt och peppar"
         }
       ],
       "recipeInstruction": [
-        "Skiva tomater och mozzarellan i lagom stora bitar.",
-        "Blanda med basilika på ett vackert serveringsfat.",
-        "Ringla över olivolja, salt och peppar."
+        {
+          "instruction": "Skiva tomater och mozzarellan i lagom stora bitar."
+        },
+        {
+          "instruction": "Blanda med basilika på ett vackert serveringsfat."
+        },
+        {
+          "instruction": "Ringla över olivolja, salt och peppar."
+        }
       ]
     }
 ]

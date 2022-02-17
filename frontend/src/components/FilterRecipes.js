@@ -1,6 +1,9 @@
 import React, { useEffect, useState }  from 'react'
-import { Box, Button, Container } from '@mui/material'
+import { Box, Container, Link } from '@mui/material'
 import RecipeCard from './RecipeCard';
+import Category from './Category';
+import CookingTime from './CookingTime';
+import MainIngredient from './MainIngredient';
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 
 import { API_URL } from '../utils/urls'
@@ -10,7 +13,7 @@ const FilterRecipes = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        fetchRecipes() // Fetch recipes with likes when component is mounted
+        fetchRecipes()
       }, [])
       
       const fetchRecipes = () => {
@@ -33,12 +36,59 @@ const FilterRecipes = () => {
           })
       }
 
+      const recipesByCategory = []
+      recipes.forEach(recipe => {
+          if (!recipesByCategory.includes(recipe.recipeCategory)) {
+              recipesByCategory.push(recipe.recipeCategory)
+          } 
+        })
+
+      const recipesByMainIngredient = []
+      recipes.forEach(recipe => {
+          if (!recipesByMainIngredient.includes(recipe.recipeMainIngredient)) {
+            recipesByMainIngredient.push(recipe.recipeMainIngredient)
+          } 
+        })
+
+      const recipesByCookingTime = []
+      recipes.forEach(recipe => {
+          if (!recipesByCookingTime.includes(recipe.recipeCookingTime)) {
+            recipesByCookingTime.push(recipe.recipeCookingTime)
+          } 
+      })
+
+      const handleCategoryFilterClick = (recipeCategory) => {
+        fetch(API_URL(`recipes/?recipeCategory=${recipeCategory}`))
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
+
+      const handleMainIngredientFilterClick = (recipeMainIngredient) => {
+        fetch(API_URL(`recipes/?recipeMainIngredient=${recipeMainIngredient}`))
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
+
+      const handleRecipeCookingTimeFilterClick = (recipeCookingTime) => {
+        fetch(API_URL(`recipes/?recipeCookingTime=${recipeCookingTime}`))
+          .then((res) => res.json())
+          .then((json) => {
+            setRecipes(json)
+        })
+      }
+
+
     return (
         <>
         <Box
             sx={{
                 backgroundColor: '#eeeeee',
                 paddingBottom: '16px',
+                marginBottom: '20px',
             }}
         >
             <Container>
@@ -54,38 +104,52 @@ const FilterRecipes = () => {
             </Box>
             <p>Typ av rätt</p>
             <Box>
-                <Button 
-                    variant="outlined"
-                    size="small"
-                >
-                    Testknapp
-                </Button>
+                {recipesByCategory.map(recipe => (
+                    <Category
+                        key={recipe}
+                        recipeCategory={recipe}
+                        onCategoryFilterClick={handleCategoryFilterClick}
+                    />
+                ))}
             </Box>
             <p>Huvudingrediens</p>
             <Box>
-                <Button 
-                    variant="outlined"
-                    size="small"
-                >
-                    Testknapp
-                </Button>
+                {recipesByMainIngredient.map((recipe) => (
+                    <MainIngredient
+                        key={recipe}
+                        recipeMainIngredient={recipe}
+                        onMainIngredientFilterClick={handleMainIngredientFilterClick}
+                    />
+                ))}
             </Box>
             <p>Tid att laga</p>
             <Box>
-                <Button 
-                    variant="outlined"
-                    size="small"
+                {recipesByCookingTime.map((recipe) => (
+                    <CookingTime
+                        key={recipe}
+                        recipeCookingTime={recipe}
+                        onRecipeCookingTimeFilterClick={handleRecipeCookingTimeFilterClick}
+                    />
+                ))}
+            </Box>
+            <Box>
+                <Link
+                    href="#"
+                    onClick={() => {
+                        fetchRecipes()
+                    }}
                 >
-                    Testknapp
-                </Button>
+                <p>Rensa filter</p>
+                </Link>
             </Box>
             </Container>
         </Box>
+        <Container>
         <Box
-        sx={{
-            display: 'grid',
-            gridGap: '20px'
-        }}
+            sx={{
+                display: 'grid',
+                gridGap: '20px'
+            }}
         >
             {recipes.map((recipe) => (
               <RecipeCard 
@@ -99,6 +163,7 @@ const FilterRecipes = () => {
               />
             ))}
         </Box>
+        </Container>
         </>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link as RouterLink, useParams } from "react-router-dom"
-import { Container, Box, Button, Checkbox, Link } from "@mui/material";
+import { Container, Box, Button, Checkbox, Link, Typography } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -13,7 +14,7 @@ import { API_URL } from "../utils/urls"
 const label = { inputProps: { 'aria-label': 'Bookmark button' } };
 
 const Recipe = () => {
-    const [recipe, setRecipe] = useState([])
+    const [recipe, setRecipe] = useState([])  
 
     const { recipeId } = useParams()
 
@@ -37,6 +38,13 @@ const Recipe = () => {
           })
       }
 
+      const recipeFont = createTheme({
+        typography: {
+          fontFamily: [
+            'Charmonman',
+          ].join(','),
+      },});
+
     return (
         <>
             <Container>
@@ -56,6 +64,7 @@ const Recipe = () => {
                     <Checkbox {...label} 
                         icon={<FavoriteBorder color='primary'/>} 
                         checkedIcon={<Favorite color='primary'/>}
+                        id={recipeId}
                     />
                 </Box>
             </Container>
@@ -75,9 +84,24 @@ const Recipe = () => {
                     }}
                 />
             </Box>
-            <Container>
+            <Container
+                sx= {{
+                    marginBottom: '50px',
+                }}
+            >
             <h1>{recipe?.response?.name}</h1>
-            <p>{recipe?.response?.description}</p>
+            <ThemeProvider theme={recipeFont}>
+                <Typography
+                            variant="h6"
+                            style={{
+                             textAlign: 'center',
+                             marginBlockEnd: '0.67em',
+                            }}
+                        >
+                            "{recipe?.response?.description}"
+                        </Typography>
+            </ThemeProvider>
+            {/* <p>{recipe?.response?.description}</p> */}
             <Box
                 style={{
                     display: 'flex',
@@ -133,10 +157,10 @@ const Recipe = () => {
             </Box>
             <h2>Ingredienser</h2>
             <div>
-                {recipe?.response?.recipeIngredients.map((recipeIngredient, index) => {
+                {recipe?.response?.recipeIngredients.map((recipeIngredients, index) => {
                     return (
                         <p key={index}>
-                            {recipeIngredient.amount} {recipeIngredient.unit} {recipeIngredient.name}
+                            {recipeIngredients.recipeIngredientAmount} {recipeIngredients.recipeIngredientUnit} {recipeIngredients.recipeIngredient}
                         </p>
                     )
                 })
@@ -144,10 +168,10 @@ const Recipe = () => {
             </div>
             <h2>Gör så här</h2>
             <div>
-                {recipe?.response?.recipeInstruction.map((recipeInstruction, index) => {
+                {recipe?.response?.recipeInstruction?.map((recipeInstruction, index) => {
                         return (
                             <p key={index}>
-                                {recipeInstruction}
+                                {recipeInstruction.instruction}
                             </p>
                         )
                     })

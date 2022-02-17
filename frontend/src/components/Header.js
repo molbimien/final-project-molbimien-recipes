@@ -1,14 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom"
-import { Link } from '@mui/material'
-import styled from 'styled-components';
-
-// importing material UI components
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { Container, Link, Box, Button, Typography } from '@mui/material'
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
-import { Container } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
     background-color: #fff;
@@ -29,6 +24,14 @@ const HeaderContainer = styled.div`
 `
 
 const Header = () => {
+
+    const headingFont = createTheme({
+        typography: {
+          fontFamily: [
+            'Charmonman',
+          ].join(','),
+      },});
+
     return (
         <HeaderContainer>
             <Container>
@@ -43,15 +46,21 @@ const Header = () => {
                     component={RouterLink}
                     to={"/"}
                 >
-                    <Typography
-                        variant="h6"
-                        component="div"sx={{ flexGrow: 1 }}
-                        color='primary.contrastText'
-                    >
-                        Molbimiens skafferi
-                    </Typography>
+                    <ThemeProvider theme={headingFont}>
+                        <Typography
+                            variant="h5"
+                            component="div"sx={{ flexGrow: 1 }}
+                            color='primary.contrastText'
+                        >
+                            Molbimiens skafferi
+                        </Typography>
+                    </ThemeProvider>
                 </Link>
-                <Button color="inherit">
+                <Button
+                    color="inherit"
+                    component={RouterLink}
+                    to={"/lagg-till-recept"}
+                >
                     <NoteAddIcon />
                 </Button>
             </Box>

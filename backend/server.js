@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
+import listEndpoints from "express-list-endpoints"
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
@@ -58,11 +59,13 @@ const RecipeSchema = new mongoose.Schema({
   recipeCookingTime: String, 
   recipeMainIngredient: String,
   recipeIngredients: [{
-	amount: String,
-	unit: String,    
-	name: String, 
+		recipeIngredientAmount: String, 
+		recipeIngredientUnit: String, 
+		recipeIngredient: String, 
+	}],
+  recipeInstruction: [{
+    instruction: Array, 
   }],
-  recipeInstruction: [String],
   datePublished: {
 	  type: Date,
 	  default: Date.now()
@@ -94,14 +97,35 @@ const authenticateUser = async (req, res, next) => {
 };
 
 // Start defining your routes here
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
+app.get("/", (req, res) => {
+	res.send({
+		"Welcome to Molbimiens skafferi API - by Maria Sjögren (https://github.com/molbimien/). See full documentation here 👉 ":
+			listEndpoints(app),
+	});
+});
 
 // endpoint to get all recipes
 app.get('/recipes', async (req, res) => {
-  const recipe = await Recipe.find(req.query)
-  res.json(recipe)
+	const recipe = await Recipe.find(req.query)
+	res.json(recipe)
+})
+
+// endpoint to get the latest recipes
+app.get('/recipes/latest', async (req, res) => {
+	const latest = await Recipe.find(req.params.datePublished)
+		.sort({createdAt: -1}) // -1 for descending sort
+		.limit(3);
+
+		res.json(latest)
+})
+
+// endpoint to get the most liked recipes
+app.get('/recipes/liked', async (req, res) => {
+	const likes = await Recipe.find(req.params.likes)
+		.sort({likes: -1}) // -1 for descending sort
+		.limit(3);
+
+		res.json(likes)
 })
 
 // endpoint to get one recipe based on id
@@ -190,6 +214,68 @@ app.post("/login", async (req, res) => {
 				success: false,
 			});
 		}
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
+
+
+// ### `POST recipes`
+// End point for adding recipe 
+app.post("/recipes", async (req, res) => {
+	const {
+		name,
+		description,
+		image,
+		recipeCategory,
+		recipeCookingTime,
+		recipeMainIngredient,
+		recipeIngredients,
+		recipeInstruction,
+		source,
+	} = req.body;
+
+	try {
+		const recipe = await Recipe.findOne({ name });
+
+		//checks if name of recipe already exists
+		if (recipe) {
+			throw "recipe name not available";
+		}
+
+		// ensures the name of recipe length is minimum 2 characters
+		if (name.length < 2) {
+			throw "recipe name has to be at least 2 characters";
+		}
+
+		const newRecipe = await new Recipe({
+			name,
+			description,
+			image,
+			recipeCategory,
+			recipeCookingTime,
+			recipeMainIngredient,
+			recipeIngredients,
+			recipeInstruction,
+			source,
+		}).save();
+
+		res.status(201).json({
+			response: {
+				recipeId: newRecipe._id,
+				name: newRecipe.name,
+				description: newRecipe.description,
+				image: newRecipe.image,
+				recipeCategory: newRecipe.recipeCategory,
+				recipeCookingTime: newRecipe.recipeCookingTime,
+				recipeMainIngredient: newRecipe.recipeMainIngredient,
+				ingredients: newRecipe.ingredients,
+				recipeInstruction: newRecipe.recipeInstruction,
+				datePublished: newRecipe.datePublished,
+				source: newRecipe.source,
+			},
+			success: true,
+		});
 	} catch (error) {
 		res.status(400).json({ response: error, success: false });
 	}

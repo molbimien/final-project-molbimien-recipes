@@ -5,16 +5,16 @@ import RecipeCard from './RecipeCard';
 import { API_URL } from '../utils/urls'
 
 
-const RecipeList = () => {
+const LatestRecipesList = () => {
     
   const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        fetchRecipes() // Fetch recipes with likes when component is mounted
+        fetchRecipes() 
       }, [])
       
       const fetchRecipes = () => {
-        fetch(API_URL('recipes'))
+        fetch(API_URL('recipes/latest'))
           .then((res) => res.json())
           .then((json) => {
             setRecipes(json)
@@ -60,4 +60,4 @@ const RecipeList = () => {
   )
 }
 
-export default RecipeList
+export default LatestRecipesList
