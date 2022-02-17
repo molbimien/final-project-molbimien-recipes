@@ -4,7 +4,8 @@ import mongoose from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 import listEndpoints from "express-list-endpoints"
-import recipeData from '../data/recipes.json'
+
+// import recipeData from './data/recipes.json' 
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
@@ -27,9 +28,9 @@ app.use((req, res, next) => {
 	if (mongoose.connection.readyState === 1) {
 		next();
 	} else {
-		res.status(503).json({ error: "Service unavailable" });
+		res.status(503).json({ error: "Service unavailable" })
 	}
-});
+})
 
 // Add models for the db
 const UserSchema = new mongoose.Schema({
@@ -83,33 +84,34 @@ const Recipe = mongoose.model('Recipe', RecipeSchema)
 
 // authenticates user with access token
 const authenticateUser = async (req, res, next) => {
-	const accessToken = req.header("Authorization");
+	const accessToken = req.header("Authorization")
 
 	try {
-		const user = await User.findOne({ accessToken });
+		const user = await User.findOne({ accessToken })
 		if (user) {
-			next();
+			next()
 		} else {
-			res.status(401).json({ response: "Please log in", success: false });
+			res.status(401).json({ response: "Please log in", success: false })
 		}
 	} catch (error) {
-		res.status(400).json({ response: error, success: false });
+		res.status(400).json({ response: error, success: false })
 	}
-};
+}
 
 // Seed and save json data to the db
-if (process.env.RESET_DB) {
 
-	const seedDatabase = () => {
+// if (process.env.RESET_DB) {
+
+// 	const seedDatabase = () => {
   
-		recipeData.forEach(item => {
-		const newRecipeTitle = new newRecipeTitle(item)
-		newRecipeTitle.save()
-	  })
-	}
+// 		recipeData.forEach(item => {
+// 			const newRecipeSchema = new RecipeSchema(item)
+// 			newRecipeSchema.save()
+// 	})
+// }
 	
-	seedDatabase()
-  }
+// 	seedDatabase()
+//   }
 
 // Start defining your routes here
 app.get('/', (req, res) => {
