@@ -3,8 +3,9 @@ import { Link as RouterLink } from "react-router-dom"
 import { Container, Box, Link, Button, Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import Favorite from '@mui/icons-material/Favorite';
+import { grey } from '@mui/material/colors'
 
 
 import { API_URL } from "../utils/urls"
@@ -43,10 +44,20 @@ const RecipeCard = (props) => {
                 gridGap: '10px',
                 boxShadow: 3,
                 borderRadius: '20px',
+                minWidth: '300px',
             }}
         >
-            <Link component={RouterLink}
-                to={`/recept/${recipe?.response?._id}/${replaceSpecialChars(recipe?.response?.name)}`}
+            <Container
+                style={{
+                    paddingBottom: '16px',
+                    paddingLeft: '0px',
+                    paddingRight: '0px',
+                }}
+            >
+            <Box
+                style={{
+                    position: 'relative',
+                }}
             >
                 <img
                     src={recipe?.response?.image}
@@ -57,15 +68,46 @@ const RecipeCard = (props) => {
                         boxSizing: 'border-box',
                         borderTopLeftRadius: '20px',
                         borderTopRightRadius: '20px',
+                        display: 'block',
                     }}
                 />
-            </Link>
+                    <Box
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Button
+                            size="small"
+                            onClick={() => {
+                                props.onLikesIncrease(props.recipeId)
+                            }}
+                            sx={{
+                                position: 'absolute',
+                                left: '8%',
+                                top: '10%',
+                                '&:hover': {
+                                    transition: '0.3s ease-in-out', 
+                                    transform: 'scale(1.2)',
+                                    bgcolor: grey[50],
+                                },
+                                backgroundColor: grey[50],
+                            }}
+                        >
+                            <Favorite
+                                color='primary'
+                                style={{marginRight: '5px'}}
+                            />
+                            {recipe?.response?.likes}
+                        </Button>
+            </Box>
+            </Box>
             <Container
                 style={{
-                    paddingBottom: '16px',
+                    paddingLeft: '16px',
+                    paddingRight: '16px',
                 }}
             >
-            <Box>
                 <h2>
                     <Link component={RouterLink}
                         to={`/recept/${recipe?.response?._id}/${replaceSpecialChars(recipe?.response?.name)}`}
@@ -95,54 +137,28 @@ const RecipeCard = (props) => {
                         style={{
                             display: 'flex',
                             alignItems: 'center',
+                            color: '#DB398D',
                         }}
                     >
-                        <Button 
-                            sx={{
-                                whiteSpace: 'nowrap'
-                            }}
-                            size="small"
-                        >
                         <AccessTimeIcon
                             color='primary'
                             style={{marginRight: '5px'}}
                         /> {recipe?.response?.recipeCookingTime}
-                        </Button>
                     </Box>
                     <Box
                         style={{
                             display: 'flex',
                             alignItems: 'center',
+                            color: '#DB398D',
                         }}
                     >
-                        <Button size="small">
                         <MenuBookIcon
                             color='primary'
                             style={{marginRight: '5px'}}
                         /> {recipe?.response?.recipeCategory}
-                        </Button>
-                    </Box>
-                    <Box
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Button
-                            size="small"
-                            onClick={() => {
-                                props.onLikesIncrease(props.recipeId)
-                            }}
-                        >
-                            <ThumbUpIcon
-                                color='primary'
-                                style={{marginRight: '5px'}}
-                            />
-                            {recipe?.response?.likes}
-                        </Button>
                     </Box>
                 </Box>
-            </Box>
+                </Container>
             </Container>
         </Box>
     )

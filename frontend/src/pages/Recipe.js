@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react"
 import { Link as RouterLink, useParams } from "react-router-dom"
 import { Container, Box, Button, Checkbox, Link, Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import { grey } from '@mui/material/colors'
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
+import CheckBoxIcon from '@mui/icons-material/CheckBox'
 
 import { API_URL } from "../utils/urls"
 
@@ -52,7 +53,8 @@ const Recipe = () => {
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between'
+                        justifyContent: 'space-between',
+                        minHeight: '42px',
                     }}
                 >
                     <Link component={RouterLink}
@@ -61,11 +63,32 @@ const Recipe = () => {
                             color='primary'
                         />
                     </Link>
-                    <Checkbox {...label} 
+                    <Box
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            postion: 'absolute',
+                        }}
+                        >
+                            <Button
+                            size="small"
+                            onClick={() => {
+                                handleLikesClick(recipeId)
+                            }}
+                        >
+                            <Favorite
+                                color='primary'
+                                style={{
+                                    marginRight: '5px',
+                                }}
+                            />{recipe?.response?.likes}
+                        </Button>
+                    </Box>
+                    {/* <Checkbox {...label} 
                         icon={<FavoriteBorder color='primary'/>} 
                         checkedIcon={<Favorite color='primary'/>}
                         id={recipeId}
-                    />
+                    /> */}
                 </Box>
             </Container>
             <Box
@@ -89,94 +112,157 @@ const Recipe = () => {
                     marginBottom: '50px',
                 }}
             >
-            <h1>{recipe?.response?.name}</h1>
-            <ThemeProvider theme={recipeFont}>
-                <Typography
+                <Box
+                    sx= {{
+                        textAlign: {
+                          md: 'center', // theme.breakpoints.up('lg')
+                        },
+                        paddingTop: {
+                          md: '20px', // theme.breakpoints.up('lg')
+                        },
+                      }}
+                >
+                    <h1>
+                        {recipe?.response?.name}
+                    </h1>
+                    <ThemeProvider theme={recipeFont}>
+                        <Typography
                             variant="h6"
-                            style={{
+                            sx={{
                              textAlign: 'center',
-                             marginBlockEnd: '0.67em',
+                             marginBlockStart: {
+                                xs: '20px', // theme.breakpoints.up('lg')
+                                md: '30px', // theme.breakpoints.up('lg')
+                              },
+                             marginBlockEnd: {
+                                xs: '20px', // theme.breakpoints.up('lg')
+                                md: '30px', // theme.breakpoints.up('lg')
+                              },
                             }}
                         >
                             "{recipe?.response?.description}"
                         </Typography>
-            </ThemeProvider>
-            {/* <p>{recipe?.response?.description}</p> */}
-            <Box
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-around'
-                    
-                }}
-            >
-                <Box
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Button size="small">
-                    <AccessTimeIcon
-                        color='primary'
-                        style={{marginRight: '5px'}}
-                    /> {recipe?.response?.recipeCookingTime}
-                    </Button>
-                </Box>
-                <Box
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Button size="small">
-                    <MenuBookIcon
-                        color='primary'
-                        style={{marginRight: '5px'}}
-                    /> {recipe?.response?.recipeCategory}
-                    </Button>
-                </Box>
-                <Box
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Button
-                    size="small"
-                    onClick={() => {
-                        handleLikesClick(recipeId)
-                    }}
-                >
-                    <ThumbUpIcon
-                        color='primary'
-                        style={{marginRight: '5px'}}
-                    />{recipe?.response?.likes}
-                </Button>
-                </Box>
-            </Box>
-            <h2>Ingredienser</h2>
-            <div>
-                {recipe?.response?.recipeIngredients.map((recipeIngredients, index) => {
-                    return (
-                        <p key={index}>
-                            {recipeIngredients.recipeIngredientAmount} {recipeIngredients.recipeIngredientUnit} {recipeIngredients.recipeIngredient}
-                        </p>
-                    )
-                })
-            }
-            </div>
-            <h2>Gör så här</h2>
-            <div>
-                {recipe?.response?.recipeInstruction?.map((recipeInstruction, index) => {
-                        return (
-                            <p key={index}>
-                                {recipeInstruction.instruction}
-                            </p>
-                        )
-                    })
-                }
-            </div>
+                     </ThemeProvider>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: {
+                                xs: 'space-around',
+                                md: 'center', // theme.breakpoints.up('lg')
+                            },
+                            gap: {
+                                md: '30px', // theme.breakpoints.up('lg')
+                            },
+                            paddingBottom: {
+                                md: '0', // theme.breakpoints.up('lg')
+                            },
+                        }}
+                    >
+                        <Box
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                color: '#DB398D',
+                            }}
+                        >
+                            <AccessTimeIcon
+                                color='primary'
+                                style={{marginRight: '5px'}}
+                            /> {recipe?.response?.recipeCookingTime}
+                        </Box>
+                        <Box
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                color: '#DB398D',
+                            }}
+                        >
+                            <MenuBookIcon
+                                color='primary'
+                                style={{marginRight: '5px'}}
+                            /> {recipe?.response?.recipeCategory}
+                        </Box>
+                        </Box>
+                        </Box>
+                        <Box
+                            sx={{
+                                paddingBottom: {
+                                  md: '100px', // theme.breakpoints.up('md')
+                                },
+                                display: {
+                                  md: 'grid', // theme.breakpoints.up('md')
+                                },
+                                gridTemplateColumns: {
+                                  md: '1fr 2fr', // theme.breakpoints.up('md')
+                                },
+                                gap: {
+                                  md: '30px', // theme.breakpoints.up('md')
+                                },
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    bgcolor: {
+                                      md: grey[100], // theme.breakpoints.up('lg')
+                                    },
+                                    float: {
+                                      md: 'left', // theme.breakpoints.up('lg')
+                                    },
+                                    padding: {
+                                      md: '30px 35px 35px', // theme.breakpoints.up('lg')
+                                    },
+                                    borderBottomRightRadius: {
+                                      md: '20px', // theme.breakpoints.up('lg')
+                                    },
+                                }}
+                            >
+                                <h2>Ingredienser</h2>
+                                <div>
+                                    {recipe?.response?.recipeIngredients.map((recipeIngredients, index) => {
+                                        return (
+                                            <p key={index}>
+                                                {recipeIngredients.recipeIngredientAmount} {recipeIngredients.recipeIngredientUnit} {recipeIngredients.recipeIngredient}
+                                            </p>
+                                        )
+                                    })}
+                                </div>
+                            </Box>
+                            <Box
+                                sx={{
+                                    paddingTop: {
+                                      md: '30px', // theme.breakpoints.up('lg')
+                                    },
+                                }}
+                            >
+                                <h2>Gör så här</h2>
+                                <div>
+                                    {recipe?.response?.recipeInstruction?.map((recipeInstruction, index) => {
+                                            return (
+                                                <li
+                                                    key={index}
+                                                    style={{
+                                                        listStyleType: 'none',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        borderBottom: '1px solid #f5f5f5',
+                                                        padding: '0 0 24px 0',
+                                                        marginTop: '24px',
+                                                    }}
+                                                >
+                                                    <Checkbox {...label} 
+                                                        icon={<CheckBoxOutlineBlankIcon color='primary' fontSize="large"/>} 
+                                                        checkedIcon={<CheckBoxIcon color='primary' fontSize="large"/>}
+                                                    />
+                                                    <div>
+                                                        {recipeInstruction.instruction}
+                                                    </div>
+                                                </li>
+                                            )
+                                        })}
+                                </div>
+                            </Box>
+                    </Box>
         </Container>
         </>
     )

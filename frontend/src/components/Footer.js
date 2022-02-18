@@ -14,7 +14,7 @@ const Footer = () => {
                 p: 2,
                 bgcolor: 'secondary.dark',
                 color: 'secondary.contrastText',
-                marginTop: '50px',
+                // marginTop: '50px',
             }}
         >
             <Box>

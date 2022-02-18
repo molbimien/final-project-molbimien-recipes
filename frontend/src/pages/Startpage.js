@@ -12,7 +12,8 @@ const Startpage = () => {
             <Container
                 sx={{
                     display: 'grid',
-                    gridGap: '10px'
+                    gridGap: '10px',
+                    marginBottom: '50px',
                 }}
             >
                 <Box
@@ -36,9 +37,6 @@ const Startpage = () => {
                     }}
                 >
                     <h2>Populära recept</h2>
-                    {/* <Link component={RouterLink}
-                    to="/recept">Se alla recept
-                    </Link> */}
                 </Box>
                 <MostLikedRecipesList />
             </Container>

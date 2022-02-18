@@ -36,11 +36,17 @@ const MostLikedRecipesList = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        overflowX: 'scroll',
+        display: {
+          xs: 'flex', 
+          ls: 'grid',
+        },
+        overflowX: {
+          xs: 'scroll', 
+        },
+        gridTemplateColumns: {
+          lg: '1fr 1fr 1fr', // theme.breakpoints.up('lg')
+        },
         gap: '20px',
-        marginLeft: '16px',
-        paddingRight: '16px',
         paddingLeft: '4px',
         paddingBottom: '10px',
       }}
