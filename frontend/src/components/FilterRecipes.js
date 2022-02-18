@@ -9,6 +9,7 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { API_URL } from "../utils/urls";
 
 const FilterRecipes = () => {
+
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -186,6 +187,7 @@ const FilterRecipes = () => {
           },
         }}
       >
+        
         <Box
           sx={{
             display: "grid",
@@ -208,6 +210,7 @@ const FilterRecipes = () => {
             />
           ))}
         </Box>
+        
       </Container>
     </>
   );
