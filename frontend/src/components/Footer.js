@@ -9,12 +9,14 @@ const Footer = () => {
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                position:'relative',
                 bottom:'0',
                 p: 2,
                 bgcolor: 'secondary.dark',
                 color: 'secondary.contrastText',
-                // marginTop: '50px',
+                position: {
+                    sx: 'relative',
+                    xl: 'absolute',
+                },
             }}
         >
             <Box>

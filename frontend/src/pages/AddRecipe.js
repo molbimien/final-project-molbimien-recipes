@@ -430,13 +430,20 @@ const AddRecipe = () => {
             </Box>
             <Box
               sx={{ 
-                padding: '20px',
+                paddingBottom: '50px',
               }}   
             >
             </Box>
           </Box>
         </Container>
+        <Box
+          sx={{
+            padding: '20px',
+          }}   
+        >
+        </Box>
       </Box>
+  
     </>
   )
 }

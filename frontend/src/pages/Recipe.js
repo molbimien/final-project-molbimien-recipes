@@ -84,11 +84,6 @@ const Recipe = () => {
                             />{recipe?.response?.likes}
                         </Button>
                     </Box>
-                    {/* <Checkbox {...label} 
-                        icon={<FavoriteBorder color='primary'/>} 
-                        checkedIcon={<Favorite color='primary'/>}
-                        id={recipeId}
-                    /> */}
                 </Box>
             </Container>
             <Box
@@ -157,6 +152,10 @@ const Recipe = () => {
                             paddingBottom: {
                                 md: '0', // theme.breakpoints.up('lg')
                             },
+                            marginBottom: {
+                                xs: '30px', // theme.breakpoints.up('lg')
+                                md: '0', // theme.breakpoints.up('lg')
+                            },
                         }}
                     >
                         <Box
@@ -203,16 +202,19 @@ const Recipe = () => {
                         >
                             <Box
                                 sx={{
-                                    bgcolor: {
-                                      md: grey[100], // theme.breakpoints.up('lg')
-                                    },
+                                    bgcolor: grey[100],
+                                    // bgcolor: {
+                                    //   md: grey[100], // theme.breakpoints.up('lg')
+                                    // },
                                     float: {
                                       md: 'left', // theme.breakpoints.up('lg')
                                     },
                                     padding: {
+                                      xs: '15px 20px 5px', // theme.breakpoints.up('lg')
                                       md: '30px 35px 35px', // theme.breakpoints.up('lg')
                                     },
                                     borderBottomRightRadius: {
+                                      xs: '20px', // theme.breakpoints.up('lg')
                                       md: '20px', // theme.breakpoints.up('lg')
                                     },
                                 }}
