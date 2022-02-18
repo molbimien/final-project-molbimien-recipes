@@ -5,7 +5,7 @@ const getStorageValue = (key, defaultValue) => {
   const saved = localStorage.getItem(key);
   const initial = JSON.parse(saved);
   return initial || defaultValue;
-}
+};
 
 const UseLocalStorage = (key, defaultValue) => {
   const [value, setValue] = useState(() => {
@@ -20,4 +20,4 @@ const UseLocalStorage = (key, defaultValue) => {
   return [value, setValue];
 };
 
-export default UseLocalStorage
+export default UseLocalStorage;
