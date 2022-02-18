@@ -69,7 +69,7 @@ const AddRecipe = () => {
         }])
         setRecipeInstruction([{ instruction: "" }])
         setSource("")
-        setMessage("Recipe created successfully")
+        setMessage("Receptet är nu tillagt i databasen.")
       } else {
         setMessage("Some error occured")
         console.log(res.status)
@@ -159,7 +159,7 @@ const AddRecipe = () => {
             justifyItems: 'center',
             borderRadius: '4px',
             maxWidth: {
-              xs: '75vw', // theme.breakpoints.up('xs')
+              xs: '90vw', // theme.breakpoints.up('xs')
               lg: '60vw', // theme.breakpoints.up('lg')
             },
           }}
@@ -203,7 +203,7 @@ const AddRecipe = () => {
             />
             <TextField
             fullWidth
-            // required
+            required
             id='description'
             label='En kort beskrivning'
             value={description}
@@ -211,13 +211,13 @@ const AddRecipe = () => {
             />
             <TextField
             fullWidth
-            // required
+            required
             id='image'
-            label='Bildadress (URL)'
+            label='Pexel bildadress (URL)'
             value={image}
             onChange={(e) => setImage(e.target.value)}
             />
-            {/* <FormControl fullWidth required> */}
+            <FormControl fullWidth required>
             <TextField
               fullWidth
               label='Källa'
@@ -226,7 +226,8 @@ const AddRecipe = () => {
               placeholder="Källa"
               onChange={(e) => setSource(e.target.value)}
             />
-            <FormControl fullWidth>
+            </FormControl>
+            <FormControl fullWidth required>
             <InputLabel>Välj kategori</InputLabel>
               <Select 
                 label="Välj kategori" 
@@ -240,8 +241,7 @@ const AddRecipe = () => {
                 ))}
               </Select>
             </FormControl>
-            {/* <FormControl fullWidth required> */}
-            <FormControl fullWidth >
+            <FormControl fullWidth required>
             <InputLabel>Välj tillagningstid</InputLabel>
               <Select 
                 label="Välj tillagningstid" 
@@ -255,8 +255,7 @@ const AddRecipe = () => {
                 ))}
               </Select>
             </FormControl>
-            {/* <FormControl fullWidth required> */}
-            <FormControl fullWidth >
+            <FormControl fullWidth required>
             <InputLabel>Välj huvudingrediens</InputLabel>
               <Select 
                 label="Välj huvudingrediens" 
@@ -277,7 +276,7 @@ const AddRecipe = () => {
                     key={index}>
                       <TextField
                         fullWidth
-                        // required
+                        required
                         label='Mängd'
                         name="recipeIngredientAmount"
                         value={ingredient.recipeIngredientAmount}
@@ -288,7 +287,7 @@ const AddRecipe = () => {
                       />
                       <TextField
                         fullWidth
-                        // required
+                        required
                         label='Måttenhet'
                         name="recipeIngredientUnit"
                         value={ingredient.recipeIngredientUnit}
@@ -308,23 +307,40 @@ const AddRecipe = () => {
                           marginBottom: '10px',
                         }}
                       />
+                      <Box
+                        sx={{
+                          display: {
+                            md: 'flex', // theme.breakpoints.up('lg')
+                          },
+                          justifyContent: {
+                            md: 'space-between', // theme.breakpoints.up('lg')
+                          },
+                          alignItems: {
+                            md: 'center', // theme.breakpoints.up('lg')
+                          },
+                        }}
+                      >
                     {recipeIngredients.length !== 1 && (
                       <Button
                         onClick={() => handleIngredientRemove(index)}
                         sx={{
-                          marginBottom: '30px',
+                          marginBottom: {
+                            xs: '30px', // theme.breakpoints.up('lg')
+                            md: '0', // theme.breakpoints.up('lg')
+                          },
                         }}
                       >
                         <RemoveCircleIcon style={{marginRight: '5px'}}/> Ta bort ingrediens
                       </Button>
                     )}
-                    {recipeIngredients.length - 1 === index && recipeIngredients.length < 4 && (
+                    {recipeIngredients.length - 1 === index && recipeIngredients.length < 15 && (
                       <Button
                         onClick={handleIngredientAdd}
                       >
                         <AddCircleIcon style={{marginRight: '5px'}}/> Lägg till ingrediens
                       </Button>
                     )}
+                    </Box>
                 </Box>
               ))}
               <Box>
@@ -342,17 +358,33 @@ const AddRecipe = () => {
                           marginBottom: '10px',
                         }}
                       />
+                      <Box
+                        sx={{
+                          display: {
+                            md: 'flex', // theme.breakpoints.up('lg')
+                          },
+                          justifyContent: {
+                            md: 'space-between', // theme.breakpoints.up('lg')
+                          },
+                          alignItems: {
+                            md: 'center', // theme.breakpoints.up('lg')
+                          },
+                        }}
+                      >
                        {recipeInstruction.length !== 1 && (
                         <Button
                           onClick={() => handleInstructionRemove(index)}
                           sx={{
-                            marginBottom: '30px',
+                            marginBottom: {
+                              xs: '30px', // theme.breakpoints.up('lg')
+                              md: '0', // theme.breakpoints.up('lg')
+                            },
                           }}
                         >
-                          <RemoveCircleIcon style={{marginRight: '5px',}}/> Ta  bort steg
+                          <RemoveCircleIcon style={{marginRight: '5px',}}/> Ta bort steg
                         </Button>
                       )}
-                      {recipeInstruction.length - 1 === index && recipeInstruction.length < 4 && (
+                      {recipeInstruction.length - 1 === index && recipeInstruction.length < 6 && (
                         <Button
                           onClick={handleInstructionAdd}
                           sx={{
@@ -362,6 +394,7 @@ const AddRecipe = () => {
                           <AddCircleIcon style={{marginRight: '5px'}}/> Lägg till steg
                         </Button>
                       )}
+                      </Box>
                   </Box>
                 ))}
               </Box>

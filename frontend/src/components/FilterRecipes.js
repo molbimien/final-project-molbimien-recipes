@@ -102,6 +102,21 @@ const FilterRecipes = () => {
                 <p>filtrera listan</p>
                 <FilterAltIcon />
             </Box>
+            <Box
+              sx={{
+                display: {
+                  md: 'flex', // theme.breakpoints.up('lg')
+                },
+                justifyContent: {
+                  md: 'space-around', // theme.breakpoints.up('lg')
+                },
+              }}
+            >
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
             <p>Typ av rätt</p>
             <Box>
                 {recipesByCategory.map(recipe => (
@@ -112,6 +127,12 @@ const FilterRecipes = () => {
                     />
                 ))}
             </Box>
+            </Box>
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
             <p>Huvudingrediens</p>
             <Box>
                 {recipesByMainIngredient.map((recipe) => (
@@ -122,6 +143,12 @@ const FilterRecipes = () => {
                     />
                 ))}
             </Box>
+            </Box>
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
             <p>Tid att laga</p>
             <Box>
                 {recipesByCookingTime.map((recipe) => (
@@ -132,11 +159,16 @@ const FilterRecipes = () => {
                     />
                 ))}
             </Box>
+            </Box>
+            </Box>
             <Box>
                 <Link
                     href="#"
                     onClick={() => {
                         fetchRecipes()
+                    }}
+                    sx={{
+                      textAlign: 'center',
                     }}
                 >
                 <p>Rensa filter</p>
@@ -144,10 +176,22 @@ const FilterRecipes = () => {
             </Box>
             </Container>
         </Box>
-        <Container>
+        <Container
+          sx= {{
+            marginBottom: '50px',
+            maxWidth: {
+              lg: 'none', // theme.breakpoints.up('lg')
+            },
+          }}
+          
+        >
         <Box
             sx={{
                 display: 'grid',
+                gridTemplateColumns: {
+                  md: '1fr 1fr', // theme.breakpoints.up('lg')
+                  lg: '1fr 1fr 1fr 1fr', // theme.breakpoints.up('lg')
+                },
                 gridGap: '20px'
             }}
         >
