@@ -287,7 +287,6 @@ const AddRecipe = () => {
                 <Box key={index}>
                   <TextField
                     fullWidth
-                    required
                     label="Mängd"
                     name="recipeIngredientAmount"
                     value={ingredient.recipeIngredientAmount}
@@ -298,7 +297,6 @@ const AddRecipe = () => {
                   />
                   <TextField
                     fullWidth
-                    required
                     label="Måttenhet"
                     name="recipeIngredientUnit"
                     value={ingredient.recipeIngredientUnit}
