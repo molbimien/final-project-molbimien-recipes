@@ -54,6 +54,7 @@ const RecipeCard = (props) => {
         >
           <Button
             size="small"
+            aria-label="Gilla receptet"
             onClick={() => {
               props.onLikesIncrease(props.recipeId);
             }}

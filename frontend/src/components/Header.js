@@ -42,7 +42,7 @@ const Header = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link component={RouterLink} to={"/"}>
+          <Link component={RouterLink} to={"/"} aria-label="Till startsidan">
             <ThemeProvider theme={headingFont}>
               <Typography
                 variant="h5"
@@ -58,6 +58,7 @@ const Header = () => {
             color="inherit"
             component={RouterLink}
             to={"/lagg-till-recept"}
+            aria-label="Lägg till recept"
           >
             <NoteAddIcon />
           </Button>

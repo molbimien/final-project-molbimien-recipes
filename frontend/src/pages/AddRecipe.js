@@ -151,7 +151,7 @@ const AddRecipe = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link component={RouterLink} to="/">
+          <Link component={RouterLink} to="/" aria-label="Till startsidan">
             <ArrowBackIosIcon
               sx={{
                 padding: "9px",
@@ -177,8 +177,8 @@ const AddRecipe = () => {
             justifyItems: "center",
             borderRadius: "4px",
             maxWidth: {
-              xs: "90vw", 
-              lg: "60vw", 
+              xs: "90vw",
+              lg: "60vw",
             },
           }}
         >
@@ -195,8 +195,6 @@ const AddRecipe = () => {
               "& > :not(style)": {
                 m: {
                   xs: 1,
-                  // md: 2,
-                  // lg: 3,
                 },
                 width: {
                   xs: "25ch",
@@ -214,7 +212,6 @@ const AddRecipe = () => {
             <TextField
               fullWidth
               required
-              id="name"
               label="Receptets namn"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -222,7 +219,6 @@ const AddRecipe = () => {
             <TextField
               fullWidth
               required
-              id="description"
               label="En kort beskrivning"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -230,8 +226,7 @@ const AddRecipe = () => {
             <TextField
               fullWidth
               required
-              id="image"
-              label="Pexel bildadress (URL)"
+              label="Avänd bildadress från Pexel"
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />
@@ -239,7 +234,6 @@ const AddRecipe = () => {
               <TextField
                 fullWidth
                 label="Källa"
-                type="text"
                 value={source}
                 placeholder="Källa"
                 onChange={(e) => setSource(e.target.value)}
@@ -327,13 +321,13 @@ const AddRecipe = () => {
                   <Box
                     sx={{
                       display: {
-                        md: "flex", 
+                        md: "flex",
                       },
                       justifyContent: {
-                        md: "space-between", 
+                        md: "space-between",
                       },
                       alignItems: {
-                        md: "center", 
+                        md: "center",
                       },
                     }}
                   >
@@ -342,8 +336,8 @@ const AddRecipe = () => {
                         onClick={() => handleIngredientRemove(index)}
                         sx={{
                           marginBottom: {
-                            xs: "30px", 
-                            md: "0", 
+                            xs: "30px",
+                            md: "0",
                           },
                         }}
                       >
@@ -368,7 +362,6 @@ const AddRecipe = () => {
                     <TextField
                       fullWidth
                       name="instruction"
-                      id="instruction"
                       label="Instruktionssteg"
                       value={singleInstruction.instruction}
                       onChange={(e) => handleInstructionChange(e, index)}
@@ -379,13 +372,13 @@ const AddRecipe = () => {
                     <Box
                       sx={{
                         display: {
-                          md: "flex", 
+                          md: "flex",
                         },
                         justifyContent: {
-                          md: "space-between", 
+                          md: "space-between",
                         },
                         alignItems: {
-                          md: "center", 
+                          md: "center",
                         },
                       }}
                     >
@@ -394,8 +387,8 @@ const AddRecipe = () => {
                           onClick={() => handleInstructionRemove(index)}
                           sx={{
                             marginBottom: {
-                              xs: "30px", 
-                              md: "0", 
+                              xs: "30px",
+                              md: "0",
                             },
                           }}
                         >
