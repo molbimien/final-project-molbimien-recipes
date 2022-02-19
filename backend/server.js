@@ -121,7 +121,7 @@ app.get("/recipes", async (req, res) => {
 // endpoint to get the latest recipes
 app.get("/recipes/latest", async (req, res) => {
   const latest = await Recipe.find(req.params.datePublished)
-    .sort({ createdAt: -1 }) // -1 for descending sort
+    .sort({ datePublished: -1 }) // -1 for descending sort
     .limit(3);
 
   res.json(latest);
