@@ -9,6 +9,7 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { API_URL } from "../utils/urls";
 
 const FilterRecipes = () => {
+
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -103,10 +104,10 @@ const FilterRecipes = () => {
           <Box
             sx={{
               display: {
-                md: "flex", // theme.breakpoints.up('lg')
+                md: "flex", 
               },
               justifyContent: {
-                md: "space-around", // theme.breakpoints.up('lg')
+                md: "space-around", 
               },
             }}
           >
@@ -182,16 +183,17 @@ const FilterRecipes = () => {
         sx={{
           marginBottom: "50px",
           maxWidth: {
-            lg: "none", // theme.breakpoints.up('lg')
+            lg: "none", 
           },
         }}
       >
+        
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              md: "1fr 1fr", // theme.breakpoints.up('lg')
-              lg: "1fr 1fr 1fr 1fr", // theme.breakpoints.up('lg')
+              md: "1fr 1fr", 
+              lg: "1fr 1fr 1fr 1fr", 
             },
             gridGap: "20px",
           }}
@@ -208,6 +210,7 @@ const FilterRecipes = () => {
             />
           ))}
         </Box>
+        
       </Container>
     </>
   );

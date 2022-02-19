@@ -42,7 +42,7 @@ const MostLikedRecipesList = () => {
           xs: "scroll",
         },
         gridTemplateColumns: {
-          lg: "1fr 1fr 1fr", // theme.breakpoints.up('lg')
+          lg: "1fr 1fr 1fr", 
         },
         gap: "20px",
         paddingLeft: "4px",

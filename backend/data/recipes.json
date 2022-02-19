@@ -1,284 +1,284 @@
 [
-    {
-      "name": "Kycklingfilé i mangosås",
-      "description": "Vincents favoriträtt",
-      "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "recipeCategory": "huvudrätt",
-      "recipeCookingTime": "< 45 min",
-      "recipeMainIngredient": "kyckling",
-      "recipeIngredients": [
-        {
+  {
+    "name": "Kycklingfilé i mangosås",
+    "description": "Vincents favoriträtt",
+    "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "recipeCategory": "huvudrätt",
+    "recipeCookingTime": "< 45 min",
+    "recipeMainIngredient": "kyckling",
+    "recipeIngredients": [
+      {
         "recipeIngredient": "smör"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "600",
         "recipeIngredientUnit": "g",
         "recipeIngredient": "kycklingfilé"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "1",
         "recipeIngredient": "röd paprika"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2",
         "recipeIngredientUnit": "dl",
         "recipeIngredient": "creme fraiche"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "1",
         "recipeIngredientUnit": "dl",
         "recipeIngredient": "vispgrädde"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2-3",
         "recipeIngredientUnit": "msk",
         "recipeIngredient": "mango chutney"
-        },
-        {
-          "recipeIngredient": "salt och peppar"
-          }
-      ],
-      "recipeInstruction": [
-        {
-          "instruction": "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra."
-        },
-        {
-          "instruction": "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar."
-        },
-        {
-          "instruction": "Servera med ris, grönsallad och mango chutney."
-        }
-      ],
-      "source": "Kycklingkokboken"
-    },
-    {
-      "name": "Morotssoppa",
-      "description": "Snabb och enkel favorit",
-      "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "recipeCategory": "huvudrätt",
-      "recipeCookingTime": "< 30 min",
-      "recipeMainIngredient": "grönsaker",
-      "recipeIngredients": [
-        {
+      },
+      {
+        "recipeIngredient": "salt och peppar"
+      }
+    ],
+    "recipeInstruction": [
+      {
+        "instruction": "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra."
+      },
+      {
+        "instruction": "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar."
+      },
+      {
+        "instruction": "Servera med ris, grönsallad och mango chutney."
+      }
+    ],
+    "source": "Kycklingkokboken"
+  },
+  {
+    "name": "Morotssoppa",
+    "description": "Snabb och enkel favorit",
+    "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "recipeCategory": "huvudrätt",
+    "recipeCookingTime": "< 30 min",
+    "recipeMainIngredient": "grönsaker",
+    "recipeIngredients": [
+      {
         "recipeIngredientAmount": "4",
         "recipeIngredient": "potatisar"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2",
         "recipeIngredient": "gula lökar"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "400",
         "recipeIngredientUnit": "g",
         "recipeIngredient": "morötter"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "1",
         "recipeIngredientUnit": "l",
         "recipeIngredient": "grönsaksbuljong"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2",
         "recipeIngredientUnit": "dl",
         "recipeIngredient": "vispgrädde"
-        },
-        {
+      },
+      {
         "recipeIngredient": "smör"
-        },
-        {
+      },
+      {
         "recipeIngredient": "salt och peppar"
-        },
-        {
+      },
+      {
         "recipeIngredient": "färsk bladpersilja"
-        }
-      ],
-      "recipeInstruction": [
-        {
-          "instruction": "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min."
-        },
-        {
-          "instruction": "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen."
-        },
-        {
-          "instruction": "Späd med resterande buljong och grädden och smaka av med salt och peppar."
-        }
-      ]
-    },
-    {
-      "name": "Caprese",
-      "description": "Marias favorittillbehör",
-      "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "recipeCategory": "tillbehör",
-      "recipeCookingTime": "< 15 min",
-      "recipeMainIngredient": "ost",
-      "recipeIngredients": [
-        {
+      }
+    ],
+    "recipeInstruction": [
+      {
+        "instruction": "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min."
+      },
+      {
+        "instruction": "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen."
+      },
+      {
+        "instruction": "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+      }
+    ]
+  },
+  {
+    "name": "Caprese",
+    "description": "Marias favorittillbehör",
+    "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "recipeCategory": "tillbehör",
+    "recipeCookingTime": "< 15 min",
+    "recipeMainIngredient": "ost",
+    "recipeIngredients": [
+      {
         "recipeIngredient": "tomater"
-        },
-        {
+      },
+      {
         "recipeIngredient": "mozarellaost"
-        },
-        {
+      },
+      {
         "recipeIngredient": "basilika"
-        },
-        {
+      },
+      {
         "recipeIngredient": "olivolja"
-        },
-        {
+      },
+      {
         "recipeIngredient": "salt och peppar"
-        }
-      ],
-      "recipeInstruction": [
-        {
-          "instruction": "Skiva tomater och mozzarellan i lagom stora bitar."
-        },
-        {
-          "instruction": "Blanda med basilika på ett vackert serveringsfat."
-        },
-        {
-          "instruction": "Ringla över olivolja, salt och peppar."
-        }
-      ]
-    },
-    {
-      "name": "Mangokyckling",
-      "description": "Vincents favoriträtt",
-      "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "recipeCategory": "huvudrätt",
-      "recipeCookingTime": "< 45 min",
-      "recipeMainIngredient": "kyckling",
-      "recipeIngredients": [
-        {
+      }
+    ],
+    "recipeInstruction": [
+      {
+        "instruction": "Skiva tomater och mozzarellan i lagom stora bitar."
+      },
+      {
+        "instruction": "Blanda med basilika på ett vackert serveringsfat."
+      },
+      {
+        "instruction": "Ringla över olivolja, salt och peppar."
+      }
+    ]
+  },
+  {
+    "name": "Mangokyckling",
+    "description": "Vincents favoriträtt",
+    "image": "https://images.pexels.com/photos/4955253/pexels-photo-4955253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "recipeCategory": "huvudrätt",
+    "recipeCookingTime": "< 45 min",
+    "recipeMainIngredient": "kyckling",
+    "recipeIngredients": [
+      {
         "recipeIngredient": "smör"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "600",
         "recipeIngredientUnit": "g",
         "recipeIngredient": "kycklingfilé"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "1",
         "recipeIngredient": "röd paprika"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2",
         "recipeIngredientUnit": "dl",
         "recipeIngredient": "creme fraiche"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "1",
         "recipeIngredientUnit": "dl",
         "recipeIngredient": "vispgrädde"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2-3",
         "recipeIngredientUnit": "msk",
         "recipeIngredient": "mango chutney"
-        },
-        {
-          "recipeIngredient": "salt och peppar"
-          }
-      ],
-      "recipeInstruction": [
-        {
-          "instruction": "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra."
-        },
-        {
-          "instruction": "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar."
-        },
-        {
-          "instruction": "Servera med ris, grönsallad och mango chutney."
-        }
-      ],
-      "source": "Kycklingkokboken"
-    },
-    {
-      "name": "Solsoppa",
-      "description": "Snabb och enkel favorit",
-      "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "recipeCategory": "huvudrätt",
-      "recipeCookingTime": "< 30 min",
-      "recipeMainIngredient": "grönsaker",
-      "recipeIngredients": [
-        {
+      },
+      {
+        "recipeIngredient": "salt och peppar"
+      }
+    ],
+    "recipeInstruction": [
+      {
+        "instruction": "Skär kycklingfiléerna i lagom smala strimlor och bryn i en stekgryta. Salta och peppra."
+      },
+      {
+        "instruction": "Skär paprikan i strimlor och blanda med kycklingköttet i grytan. Häll i creme fraiche, grädde och mango chutney och rör om. Smaka av med salt och peppar."
+      },
+      {
+        "instruction": "Servera med ris, grönsallad och mango chutney."
+      }
+    ],
+    "source": "Kycklingkokboken"
+  },
+  {
+    "name": "Solsoppa",
+    "description": "Snabb och enkel favorit",
+    "image": "https://images.pexels.com/photos/4451869/pexels-photo-4451869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "recipeCategory": "huvudrätt",
+    "recipeCookingTime": "< 30 min",
+    "recipeMainIngredient": "grönsaker",
+    "recipeIngredients": [
+      {
         "recipeIngredientAmount": "4",
         "recipeIngredient": "potatisar"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2",
         "recipeIngredient": "gula lökar"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "400",
         "recipeIngredientUnit": "g",
         "recipeIngredient": "morötter"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "1",
         "recipeIngredientUnit": "l",
         "recipeIngredient": "grönsaksbuljong"
-        },
-        {
+      },
+      {
         "recipeIngredientAmount": "2",
         "recipeIngredientUnit": "dl",
         "recipeIngredient": "vispgrädde"
-        },
-        {
+      },
+      {
         "recipeIngredient": "smör"
-        },
-        {
+      },
+      {
         "recipeIngredient": "salt och peppar"
-        },
-        {
+      },
+      {
         "recipeIngredient": "färsk bladpersilja"
-        }
-      ],
-      "recipeInstruction": [
-        {
-          "instruction": "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min."
-        },
-        {
-          "instruction": "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen."
-        },
-        {
-          "instruction": "Späd med resterande buljong och grädden och smaka av med salt och peppar."
-        }
-      ]
-    },
-    {
-      "name": "Capresesallad",
-      "description": "Marias favorittillbehör",
-      "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "recipeCategory": "tillbehör",
-      "recipeCookingTime": "< 15 min",
-      "recipeMainIngredient": "ost",
-      "recipeIngredients": [
-        {
+      }
+    ],
+    "recipeInstruction": [
+      {
+        "instruction": "Fräs löken i smör i en kastrull. Tillsätt potatis, morötter, salt, peppar och buljong och låt soppan koka ca 15 min."
+      },
+      {
+        "instruction": "Sila och spara buljongen. Mixa grönsakerna till puré med hälften av buljongen."
+      },
+      {
+        "instruction": "Späd med resterande buljong och grädden och smaka av med salt och peppar."
+      }
+    ]
+  },
+  {
+    "name": "Capresesallad",
+    "description": "Marias favorittillbehör",
+    "image": "https://images.pexels.com/photos/144239/tomatoes-tomato-mozzarella-basil-mozzarella-144239.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "recipeCategory": "tillbehör",
+    "recipeCookingTime": "< 15 min",
+    "recipeMainIngredient": "ost",
+    "recipeIngredients": [
+      {
         "recipeIngredient": "tomater"
-        },
-        {
+      },
+      {
         "recipeIngredient": "mozarellaost"
-        },
-        {
+      },
+      {
         "recipeIngredient": "basilika"
-        },
-        {
+      },
+      {
         "recipeIngredient": "olivolja"
-        },
-        {
+      },
+      {
         "recipeIngredient": "salt och peppar"
-        }
-      ],
-      "recipeInstruction": [
-        {
-          "instruction": "Skiva tomater och mozzarellan i lagom stora bitar."
-        },
-        {
-          "instruction": "Blanda med basilika på ett vackert serveringsfat."
-        },
-        {
-          "instruction": "Ringla över olivolja, salt och peppar."
-        }
-      ]
-    }
+      }
+    ],
+    "recipeInstruction": [
+      {
+        "instruction": "Skiva tomater och mozzarellan i lagom stora bitar."
+      },
+      {
+        "instruction": "Blanda med basilika på ett vackert serveringsfat."
+      },
+      {
+        "instruction": "Ringla över olivolja, salt och peppar."
+      }
+    ]
+  }
 ]

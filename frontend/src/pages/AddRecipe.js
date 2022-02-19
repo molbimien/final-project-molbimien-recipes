@@ -177,8 +177,8 @@ const AddRecipe = () => {
             justifyItems: "center",
             borderRadius: "4px",
             maxWidth: {
-              xs: "90vw", // theme.breakpoints.up('xs')
-              lg: "60vw", // theme.breakpoints.up('lg')
+              xs: "90vw", 
+              lg: "60vw", 
             },
           }}
         >
@@ -327,13 +327,13 @@ const AddRecipe = () => {
                   <Box
                     sx={{
                       display: {
-                        md: "flex", // theme.breakpoints.up('lg')
+                        md: "flex", 
                       },
                       justifyContent: {
-                        md: "space-between", // theme.breakpoints.up('lg')
+                        md: "space-between", 
                       },
                       alignItems: {
-                        md: "center", // theme.breakpoints.up('lg')
+                        md: "center", 
                       },
                     }}
                   >
@@ -342,8 +342,8 @@ const AddRecipe = () => {
                         onClick={() => handleIngredientRemove(index)}
                         sx={{
                           marginBottom: {
-                            xs: "30px", // theme.breakpoints.up('lg')
-                            md: "0", // theme.breakpoints.up('lg')
+                            xs: "30px", 
+                            md: "0", 
                           },
                         }}
                       >
@@ -379,13 +379,13 @@ const AddRecipe = () => {
                     <Box
                       sx={{
                         display: {
-                          md: "flex", // theme.breakpoints.up('lg')
+                          md: "flex", 
                         },
                         justifyContent: {
-                          md: "space-between", // theme.breakpoints.up('lg')
+                          md: "space-between", 
                         },
                         alignItems: {
-                          md: "center", // theme.breakpoints.up('lg')
+                          md: "center", 
                         },
                       }}
                     >
@@ -394,8 +394,8 @@ const AddRecipe = () => {
                           onClick={() => handleInstructionRemove(index)}
                           sx={{
                             marginBottom: {
-                              xs: "30px", // theme.breakpoints.up('lg')
-                              md: "0", // theme.breakpoints.up('lg')
+                              xs: "30px", 
+                              md: "0", 
                             },
                           }}
                         >
