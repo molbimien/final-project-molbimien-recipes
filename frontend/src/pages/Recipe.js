@@ -19,7 +19,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 import { API_URL } from "../utils/urls";
 
-const label = { inputProps: { "aria-label": "Bookmark button" } };
+const label = { inputProps: { "aria-label": "Instruktion" } };
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState([]);
@@ -63,7 +63,7 @@ const Recipe = () => {
             minHeight: "42px",
           }}
         >
-          <Link component={RouterLink} to="/">
+          <Link component={RouterLink} to="/" aria-label="Gå tillbaka">
             <ArrowBackIosIcon color="primary" />
           </Link>
           <Box
@@ -75,6 +75,7 @@ const Recipe = () => {
           >
             <Button
               size="small"
+              aria-label="Gilla receptet"
               onClick={() => {
                 handleLikesClick(recipeId);
               }}
