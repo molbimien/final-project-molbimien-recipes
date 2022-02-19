@@ -114,10 +114,10 @@ const Recipe = () => {
         <Box
           sx={{
             textAlign: {
-              md: "center", // theme.breakpoints.up('lg')
+              md: "center", 
             },
             paddingTop: {
-              md: "20px", // theme.breakpoints.up('lg')
+              md: "20px", 
             },
           }}
         >
@@ -128,12 +128,12 @@ const Recipe = () => {
               sx={{
                 textAlign: "center",
                 marginBlockStart: {
-                  xs: "20px", // theme.breakpoints.up('lg')
-                  md: "30px", // theme.breakpoints.up('lg')
+                  xs: "20px", 
+                  md: "30px", 
                 },
                 marginBlockEnd: {
-                  xs: "20px", // theme.breakpoints.up('lg')
-                  md: "30px", // theme.breakpoints.up('lg')
+                  xs: "20px", 
+                  md: "30px", 
                 },
               }}
             >
@@ -146,17 +146,17 @@ const Recipe = () => {
               alignItems: "center",
               justifyContent: {
                 xs: "space-around",
-                md: "center", // theme.breakpoints.up('lg')
+                md: "center", 
               },
               gap: {
-                md: "30px", // theme.breakpoints.up('lg')
+                md: "30px", 
               },
               paddingBottom: {
-                md: "0", // theme.breakpoints.up('lg')
+                md: "0", 
               },
               marginBottom: {
-                xs: "30px", // theme.breakpoints.up('lg')
-                md: "0", // theme.breakpoints.up('lg')
+                xs: "30px", 
+                md: "0", 
               },
             }}
           >
@@ -185,35 +185,32 @@ const Recipe = () => {
         <Box
           sx={{
             paddingBottom: {
-              md: "100px", // theme.breakpoints.up('md')
+              md: "100px", 
             },
             display: {
-              md: "grid", // theme.breakpoints.up('md')
+              md: "grid", 
             },
             gridTemplateColumns: {
-              md: "1fr 2fr", // theme.breakpoints.up('md')
+              md: "1fr 2fr", 
             },
             gap: {
-              md: "30px", // theme.breakpoints.up('md')
+              md: "30px", 
             },
           }}
         >
           <Box
             sx={{
               bgcolor: grey[100],
-              // bgcolor: {
-              //   md: grey[100], // theme.breakpoints.up('lg')
-              // },
               float: {
-                md: "left", // theme.breakpoints.up('lg')
+                md: "left", 
               },
               padding: {
-                xs: "15px 20px 5px", // theme.breakpoints.up('lg')
-                md: "30px 35px 35px", // theme.breakpoints.up('lg')
+                xs: "15px 20px 5px", 
+                md: "30px 35px 35px", 
               },
               borderBottomRightRadius: {
-                xs: "20px", // theme.breakpoints.up('lg')
-                md: "20px", // theme.breakpoints.up('lg')
+                xs: "20px", 
+                md: "20px", 
               },
             }}
           >
@@ -235,7 +232,7 @@ const Recipe = () => {
           <Box
             sx={{
               paddingTop: {
-                md: "30px", // theme.breakpoints.up('lg')
+                md: "30px", 
               },
             }}
           >

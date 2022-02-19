@@ -20,7 +20,7 @@ const AllRecipes = () => {
       <Container
         sx={{
           textAlign: {
-            md: "center", // theme.breakpoints.up('md')
+            md: "center", 
           },
         }}
       >
